@@ -1254,3 +1254,104 @@
         initServiceGuidance();
     }
 })();
+
+const SERVICE_STORY_CONTENT = {
+    "small-business-websites.html": {
+        eyebrow: "Website setup direction",
+        title: "A clearer website can help customers understand and act faster.",
+        text1: "This pathway helps local businesses explore a website structure that explains the offer clearly, supports trust, and creates a more practical route to inquiry.",
+        text2: "The focus is not just visual presentation, but useful page hierarchy, a clearer next step, and a digital foundation that supports how the business actually works.",
+        image: "assets/images/home/local-owner-office.jpg",
+        alt: "Local business owner reviewing website setup options"
+    },
+
+    "google-business-profile-setup.html": {
+        eyebrow: "Visibility direction",
+        title: "A better profile setup can make local discovery more consistent.",
+        text1: "This pathway helps organize business information, categories, service areas, and profile clarity so customers can more easily understand what the business offers.",
+        text2: "The goal is to reduce confusion, improve consistency, and create a more reliable local presence across the places customers already search.",
+        image: "assets/images/home/cafe-owner-tablet.jpg",
+        alt: "Business owner reviewing profile and local visibility details"
+    },
+
+    "online-booking-setup.html": {
+        eyebrow: "Booking direction",
+        title: "A simpler booking flow can reduce friction before the first appointment.",
+        text1: "This service explores practical booking pathways that help customers choose, schedule, and confirm appointments with less confusion.",
+        text2: "The main goal is to support a clearer experience for both the customer and the business while keeping the process easier to manage.",
+        image: "assets/images/services/salon-owner-schedule.jpg",
+        alt: "Business owner managing online appointment setup"
+    },
+
+    "lead-forms-call-tracking.html": {
+        eyebrow: "Lead flow direction",
+        title: "A clearer inquiry pathway can make demand easier to capture and follow.",
+        text1: "This service helps businesses review how inquiries are collected, routed, and measured across forms, calls, and important landing points.",
+        text2: "The focus is on reducing friction, improving visibility, and creating a more useful structure for future decisions.",
+        image: "assets/images/services/home-service-owner-workshop.jpg",
+        alt: "Business owner reviewing inquiry and lead pathways"
+    },
+
+    "review-management.html": {
+        eyebrow: "Feedback direction",
+        title: "A better review workflow can make customer feedback easier to organize.",
+        text1: "This pathway explores when requests are sent, how responses are managed, and how feedback can be handled more consistently.",
+        text2: "The goal is to support a more responsible and practical process without artificial claims, ratings, or outcomes.",
+        image: "assets/images/home/cafe-owner-tablet.jpg",
+        alt: "Business owner reviewing customer feedback workflow"
+    },
+
+    "email-sms-automation.html": {
+        eyebrow: "Communication direction",
+        title: "A more useful follow-up pathway can improve customer communication.",
+        text1: "This service helps businesses explore message timing, workflow triggers, and communication sequences that feel more relevant and easier to manage.",
+        text2: "The result is a more structured pathway for reminders, updates, and customer follow-up built around real business needs.",
+        image: "assets/images/home/cafe-owner-tablet.jpg",
+        alt: "Business owner reviewing digital communication workflows"
+    },
+
+    "analytics-setup.html": {
+        eyebrow: "Measurement direction",
+        title: "A clearer analytics setup can make decisions more grounded.",
+        text1: "This pathway focuses on event tracking, conversions, and useful reporting structures so the business can better understand what is actually happening.",
+        text2: "The purpose is to reduce guesswork and create a more practical measurement foundation for future improvements.",
+        image: "assets/images/home/local-owner-office.jpg",
+        alt: "Business team reviewing analytics and reporting setup"
+    },
+
+    "crm-setup.html": {
+        eyebrow: "Operations direction",
+        title: "A more connected CRM setup can make customer handling easier to manage.",
+        text1: "This service explores how leads, follow-up, internal tasks, and customer records can be organized into a clearer day-to-day workflow.",
+        text2: "The goal is to create a more useful operational structure that supports visibility, consistency, and easier coordination.",
+        image: "assets/images/services/home-service-owner-workshop.jpg",
+        alt: "Business team organizing leads and customer workflows"
+    }
+};
+
+function initServiceStory() {
+    const section = document.querySelector(".service-story");
+    if (!section) return;
+
+    const fileName = window.location.pathname.split("/").pop();
+    const content = SERVICE_STORY_CONTENT[fileName];
+    if (!content) return;
+
+    const eyebrow = section.querySelector(".nl-eyebrow");
+    const title = section.querySelector("h2");
+    const paragraphs = section.querySelectorAll(".service-story__content p");
+    const image = section.querySelector(".service-story__image-frame img");
+
+    if (eyebrow) eyebrow.textContent = content.eyebrow;
+    if (title) title.textContent = content.title;
+
+    if (paragraphs[0]) paragraphs[0].textContent = content.text1;
+    if (paragraphs[1]) paragraphs[1].textContent = content.text2;
+
+    if (image) {
+        image.src = content.image;
+        image.alt = content.alt;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", initServiceStory);
