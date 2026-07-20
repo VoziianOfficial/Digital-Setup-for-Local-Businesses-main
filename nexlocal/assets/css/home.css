@@ -2935,3 +2935,477 @@
     transform: none;
   }
 }
+
+/* =========================================================
+   HOME PLATFORM VALUES
+========================================================= */
+
+.home-platform-values {
+  position: relative;
+
+  padding-block:
+    clamp(3rem, 5vw, 5rem);
+
+  overflow: hidden;
+
+  background:
+    var(--color-background);
+}
+
+
+/* Decorative background geometry */
+
+.home-platform-values::before {
+  content: "";
+
+  position: absolute;
+
+  top: -150px;
+  right: -120px;
+
+  width: 360px;
+  aspect-ratio: 1;
+
+  border:
+    1px solid rgba(93, 124, 255, 0.14);
+
+  transform:
+    rotate(28deg);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.home-platform-values__grid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap:
+    clamp(1.2rem, 2.3vw, 2.5rem);
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.home-platform-value {
+  position: relative;
+
+  display: flex;
+  min-width: 0;
+  min-height: 285px;
+
+  padding:
+    clamp(1.8rem, 3vw, 2.7rem);
+
+  flex-direction: column;
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(22, 26, 24, 0.07);
+
+  border-radius:
+    clamp(1.5rem, 2.3vw, 2.3rem);
+
+  background:
+    var(--color-white);
+
+  box-shadow:
+    0 18px 55px rgba(16, 21, 19, 0.045);
+
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    background-color 260ms ease;
+}
+
+
+/* Small corner detail */
+
+.home-platform-value::after {
+  content: "";
+
+  position: absolute;
+
+  top: -28px;
+  right: -28px;
+
+  width: 80px;
+  height: 80px;
+
+  border:
+    1px solid rgba(93, 124, 255, 0.12);
+
+  transform:
+    rotate(30deg);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease;
+
+  pointer-events: none;
+}
+
+
+.home-platform-value:hover {
+  transform:
+    translateY(-7px);
+
+  border-color:
+    rgba(93, 124, 255, 0.24);
+
+  box-shadow:
+    0 30px 75px rgba(16, 21, 19, 0.11);
+}
+
+.home-platform-value:hover::after {
+  border-color:
+    rgba(185, 242, 39, 0.5);
+
+  transform:
+    rotate(38deg) scale(1.08);
+}
+
+
+/* Featured card */
+
+.home-platform-value--featured {
+  border-color:
+    rgba(185, 242, 39, 0.42);
+
+  background:
+    linear-gradient(145deg,
+      var(--color-lime-soft),
+      var(--color-white) 72%);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.home-platform-value__icon {
+  display: grid;
+  place-items: center;
+
+  width: 72px;
+  height: 72px;
+
+  margin-bottom:
+    clamp(1.5rem, 2.5vw, 2rem);
+
+  border:
+    1px solid rgba(22, 26, 24, 0.06);
+
+  border-radius: 50%;
+
+  background:
+    var(--color-white);
+
+  color:
+    var(--color-dark);
+
+  box-shadow:
+    0 13px 35px rgba(16, 21, 19, 0.07);
+
+  transition:
+    color 260ms ease,
+    background-color 260ms ease,
+    transform 260ms ease;
+}
+
+.home-platform-value__icon svg {
+  width: 34px;
+  height: 34px;
+
+  stroke-width: 1.7;
+}
+
+
+.home-platform-value__icon--lime {
+  background:
+    var(--color-lime);
+
+  color:
+    var(--color-dark);
+}
+
+.home-platform-value__icon--violet {
+  background:
+    var(--color-violet-soft);
+
+  color:
+    var(--color-violet);
+}
+
+.home-platform-value__icon--dark {
+  background:
+    var(--color-dark);
+
+  color:
+    var(--color-lime);
+}
+
+
+.home-platform-value:hover .home-platform-value__icon {
+  transform:
+    translateY(-4px) rotate(-4deg);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.home-platform-value h3 {
+  width: 100%;
+  margin: 0;
+
+  color:
+    var(--color-dark);
+
+  font-size:
+    clamp(1.35rem, 1.8vw, 1.75rem);
+
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.home-platform-value p {
+  width: min(39ch, 100%);
+
+  margin-top: 1rem;
+
+  color:
+    var(--color-muted);
+
+  font-size:
+    clamp(0.9rem, 1vw, 1rem);
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 980px) {
+  .home-platform-values__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .home-platform-value {
+    min-height: 270px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+  .home-platform-values {
+    padding-block:
+      2.75rem;
+  }
+
+  .home-platform-values__grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 1rem;
+  }
+
+  .home-platform-value {
+    width: 100%;
+    min-height: 0;
+
+    padding:
+      1.6rem;
+
+    border-radius:
+      1.4rem;
+  }
+
+  .home-platform-value__icon {
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 1.35rem;
+  }
+
+  .home-platform-value__icon svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .home-platform-value h3 {
+    font-size: 1.45rem;
+  }
+
+  .home-platform-value p {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-platform-value,
+  .home-platform-value::after,
+  .home-platform-value__icon {
+    transition: none;
+  }
+
+  .home-platform-value:hover,
+  .home-platform-value:hover::after,
+  .home-platform-value:hover .home-platform-value__icon {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   HOME PLATFORM VALUES — COMPACT CARDS + ICONS RIGHT
+========================================================= */
+
+.home-platform-value {
+  min-height: 220px;
+
+  padding:
+    clamp(1.5rem, 2.4vw, 2.1rem) clamp(7rem, 9vw, 8.5rem) clamp(1.5rem, 2.4vw, 2.1rem) clamp(1.5rem, 2.4vw, 2.1rem);
+
+  justify-content: center;
+}
+
+
+/* Icon on the right */
+
+.home-platform-value__icon {
+  position: absolute;
+
+  top: 50%;
+  right: clamp(1.5rem, 2.5vw, 2.4rem);
+
+  width: 64px;
+  height: 64px;
+
+  margin: 0;
+
+  transform: translateY(-50%);
+}
+
+.home-platform-value:hover .home-platform-value__icon {
+  transform:
+    translateY(calc(-50% - 4px)) rotate(-4deg);
+}
+
+.home-platform-value__icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* Text area */
+
+.home-platform-value h3 {
+  max-width: 18ch;
+
+  font-size:
+    clamp(1.25rem, 1.6vw, 1.6rem);
+}
+
+.home-platform-value p {
+  width: 100%;
+  max-width: 35ch;
+
+  margin-top: 0.75rem;
+
+  font-size:
+    clamp(0.86rem, 0.95vw, 0.95rem);
+
+  line-height: 1.65;
+}
+
+
+/* TABLET */
+
+@media (max-width: 980px) {
+  .home-platform-value {
+    min-height: 210px;
+
+    padding:
+      1.6rem 7rem 1.6rem 1.6rem;
+  }
+
+  .home-platform-value__icon {
+    right: 1.6rem;
+
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 620px) {
+  .home-platform-value {
+    min-height: 180px;
+
+    padding:
+      1.4rem 5.8rem 1.4rem 1.4rem;
+
+    justify-content: center;
+  }
+
+  .home-platform-value__icon {
+    top: 1.4rem;
+    right: 1.25rem;
+
+    width: 50px;
+    height: 50px;
+
+    transform: none;
+  }
+
+  .home-platform-value:hover .home-platform-value__icon {
+    transform: rotate(-4deg);
+  }
+
+  .home-platform-value__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .home-platform-value h3 {
+    max-width: calc(100% - 3.5rem);
+
+    font-size: 1.3rem;
+  }
+
+  .home-platform-value p {
+    max-width: 100%;
+
+    margin-top: 0.7rem;
+  }
+}
