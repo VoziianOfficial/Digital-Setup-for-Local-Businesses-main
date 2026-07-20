@@ -1,0 +1,1 @@
+(function(){"use strict";window.NEXLOCAL_PAGE_INITS=window.NEXLOCAL_PAGE_INITS||[];window.NEXLOCAL_PAGE_INITS.push(function(){const root=document.querySelector(".services-page");if(root)root.dataset.ready="true";});})();

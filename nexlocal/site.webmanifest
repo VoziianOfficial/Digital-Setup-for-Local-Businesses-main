@@ -1,0 +1,13 @@
+{
+  "name": "Nexlocal",
+  "short_name": "Nexlocal",
+  "description": "A clearer digital foundation for local business.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F5F6F2",
+  "theme_color": "#101513",
+  "icons": [
+    { "src": "favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
