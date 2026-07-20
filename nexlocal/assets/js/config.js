@@ -7,17 +7,31 @@
     brand: {
       name: "Nexlocal",
       tagline: "A clearer digital foundation for local business.",
-      shortDescription: "An independent platform helping local businesses explore practical website, visibility, booking, lead, analytics and communication setup options."
+      shortDescription:
+        "An independent platform helping local businesses explore practical digital setup options.",
+
+      /*
+       * При смене бренда укажи новый файл логотипа.
+       */
+      logoSrc: "assets/icons/nexlocal-logo.svg",
+      markSrc: "assets/icons/nexlocal-mark.svg",
+      logoAlt: "Nexlocal"
     },
+
     company: {
       legalName: "Nexlocal Platform LLC",
+
       email: "support@nexlocal.com",
-      emailHref: "mailto:support@nexlocal.com",
+
+      /*
+       * Оставь пустым, пока реального номера нет.
+       */
+      phoneDisplay: "",
+      phoneRaw: "",
+
       addressLine1: "2450 Lakeside Drive, Suite 210",
       cityStateZip: "Austin, TX 78704",
-      country: "United States",
-      fullAddress: "2450 Lakeside Drive, Suite 210, Austin, TX 78704, United States",
-      mapHref: "https://maps.google.com/?q=2450%20Lakeside%20Drive%20Suite%20210%20Austin%20TX%2078704"
+      country: "United States"
     },
     navigation: {
       header: [

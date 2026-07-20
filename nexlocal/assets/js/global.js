@@ -2,6 +2,32 @@
   "use strict";
 
   const config = window.NEXLOCAL_CONFIG || {};
+
+
+
+  const ORIGINAL_SITE_IDENTITY = Object.freeze({
+    brandName: "Nexlocal",
+    legalName: "Nexlocal Platform LLC",
+
+    email: "support@nexlocal.com",
+    emailHref: "mailto:support@nexlocal.com",
+
+    phoneDisplay: "",
+    phoneHref: "",
+
+    addressLine1: "2450 Lakeside Drive, Suite 210",
+    cityStateZip: "Austin, TX 78704",
+    country: "United States",
+
+    fullAddress:
+      "2450 Lakeside Drive, Suite 210, Austin, TX 78704, United States",
+
+    mapHref:
+      "https://maps.google.com/?q=2450%20Lakeside%20Drive%20Suite%20210%20Austin%20TX%2078704",
+
+    logoSrc: "assets/icons/nexlocal-logo.svg",
+    markSrc: "assets/icons/nexlocal-mark.svg"
+  });
   const serviceItems = Array.isArray(config.services) ? config.services : [];
 
   function escapeHtml(value) {
@@ -84,16 +110,643 @@
     return String(path || "").split(".").reduce((value, key) => value && value[key], config);
   }
 
-  function injectConfigValues() {
-    document.querySelectorAll("[data-config-text]").forEach((node) => {
-      const value = resolveConfigPath(node.dataset.configText);
-      if (typeof value === "string") node.textContent = value;
+
+  function normalizePhone(value) {
+    const source = String(value || "").trim();
+
+    if (!source) {
+      return "";
+    }
+
+    const digits = source.replace(/\D/g, "");
+
+    if (!digits) {
+      return "";
+    }
+
+    return source.startsWith("+")
+      ? `+${digits}`
+      : digits;
+  }
+
+
+  function prepareSiteIdentity() {
+    const brand = config.brand || {};
+    const company = config.company || {};
+
+    const brandName =
+      String(
+        brand.name ||
+        ORIGINAL_SITE_IDENTITY.brandName
+      ).trim();
+
+    const legalName =
+      String(
+        company.legalName ||
+        ORIGINAL_SITE_IDENTITY.legalName
+      ).trim();
+
+    const email =
+      String(
+        company.email ||
+        ORIGINAL_SITE_IDENTITY.email
+      ).trim();
+
+    const phoneDisplay =
+      String(company.phoneDisplay || "").trim();
+
+    const phoneRaw =
+      normalizePhone(
+        company.phoneRaw ||
+        phoneDisplay
+      );
+
+    const addressLine1 =
+      String(company.addressLine1 || "").trim();
+
+    const cityStateZip =
+      String(company.cityStateZip || "").trim();
+
+    const country =
+      String(company.country || "").trim();
+
+    const fullAddress = [
+      addressLine1,
+      cityStateZip,
+      country
+    ]
+      .filter(Boolean)
+      .join(", ");
+
+    const emailHref =
+      email
+        ? `mailto:${email}`
+        : "";
+
+    const phoneHref =
+      phoneRaw
+        ? `tel:${phoneRaw}`
+        : "";
+
+    const mapHref =
+      fullAddress
+        ? `https://maps.google.com/?q=${encodeURIComponent(fullAddress)}`
+        : "";
+
+    const identity = {
+      brandName,
+      legalName,
+
+      email,
+      emailHref,
+
+      phoneDisplay,
+      phoneRaw,
+      phoneHref,
+
+      addressLine1,
+      cityStateZip,
+      country,
+      fullAddress,
+      mapHref,
+
+      logoSrc:
+        brand.logoSrc ||
+        ORIGINAL_SITE_IDENTITY.logoSrc,
+
+      markSrc:
+        brand.markSrc ||
+        ORIGINAL_SITE_IDENTITY.markSrc,
+
+      logoAlt:
+        brand.logoAlt ||
+        brandName
+    };
+
+    /*
+     * Обновляем сам config, чтобы renderHeader()
+     * и renderFooter() тоже получили готовые ссылки.
+     */
+    config.brand = {
+      ...brand,
+      name: identity.brandName,
+      logoSrc: identity.logoSrc,
+      markSrc: identity.markSrc,
+      logoAlt: identity.logoAlt
+    };
+
+    config.company = {
+      ...company,
+
+      legalName: identity.legalName,
+
+      email: identity.email,
+      emailHref: identity.emailHref,
+
+      phoneDisplay: identity.phoneDisplay,
+      phoneRaw: identity.phoneRaw,
+      phoneHref: identity.phoneHref,
+
+      addressLine1: identity.addressLine1,
+      cityStateZip: identity.cityStateZip,
+      country: identity.country,
+      fullAddress: identity.fullAddress,
+      mapHref: identity.mapHref
+    };
+
+    return identity;
+  }
+
+
+
+  function collectElements(root, selector) {
+    const elements = [];
+
+    if (
+      root &&
+      root.nodeType === Node.ELEMENT_NODE &&
+      root.matches(selector)
+    ) {
+      elements.push(root);
+    }
+
+    if (root && root.querySelectorAll) {
+      elements.push(
+        ...root.querySelectorAll(selector)
+      );
+    }
+
+    return elements;
+  }
+
+
+
+  function createIdentityPairs(identity) {
+    return [
+      [
+        ORIGINAL_SITE_IDENTITY.fullAddress,
+        identity.fullAddress
+      ],
+
+      [
+        ORIGINAL_SITE_IDENTITY.legalName,
+        identity.legalName
+      ],
+
+      [
+        ORIGINAL_SITE_IDENTITY.addressLine1,
+        identity.addressLine1
+      ],
+
+      [
+        ORIGINAL_SITE_IDENTITY.cityStateZip,
+        identity.cityStateZip
+      ],
+
+      [
+        ORIGINAL_SITE_IDENTITY.email,
+        identity.email
+      ],
+
+      [
+        ORIGINAL_SITE_IDENTITY.phoneDisplay,
+        identity.phoneDisplay
+      ],
+
+      [
+        ORIGINAL_SITE_IDENTITY.country,
+        identity.country
+      ],
+
+   
+      [
+        ORIGINAL_SITE_IDENTITY.brandName,
+        identity.brandName
+      ]
+    ]
+      .filter(function (pair) {
+        return (
+          pair[0] &&
+          pair[1] &&
+          pair[0] !== pair[1]
+        );
+      })
+      .sort(function (first, second) {
+        return second[0].length - first[0].length;
+      });
+  }
+
+
+  function replaceIdentityString(value, pairs) {
+    let result = String(value == null ? "" : value);
+
+    pairs.forEach(function (pair) {
+      const oldValue = pair[0];
+      const newValue = pair[1];
+
+      result =
+        result.split(oldValue).join(newValue);
     });
-    document.querySelectorAll("[data-config-href]").forEach((node) => {
-      const value = resolveConfigPath(node.dataset.configHref);
-      if (typeof value === "string" && /^(https?:|mailto:|[a-z0-9./?=&_-]+$)/i.test(value)) node.setAttribute("href", value);
+
+    return result;
+  }
+
+
+
+
+  function applyConfigBindings(root, identity) {
+    collectElements(
+      root,
+      "[data-config-text]"
+    ).forEach(function (node) {
+      const value =
+        resolveConfigPath(
+          node.dataset.configText
+        );
+
+      if (
+        typeof value === "string" ||
+        typeof value === "number"
+      ) {
+        node.textContent = String(value);
+      }
+    });
+
+
+    collectElements(
+      root,
+      "[data-config-href]"
+    ).forEach(function (node) {
+      const value =
+        resolveConfigPath(
+          node.dataset.configHref
+        );
+
+      if (typeof value === "string") {
+        node.setAttribute("href", value);
+      }
+    });
+
+
+    collectElements(
+      root,
+      "[data-config-email]"
+    ).forEach(function (node) {
+      node.textContent = identity.email;
+
+      if (node.tagName === "A") {
+        node.href = identity.emailHref;
+      }
+    });
+
+
+    collectElements(
+      root,
+      "[data-config-phone]"
+    ).forEach(function (node) {
+      node.textContent =
+        identity.phoneDisplay;
+
+      if (node.tagName === "A") {
+        node.href = identity.phoneHref;
+      }
+    });
+
+
+    collectElements(
+      root,
+      "[data-config-address]"
+    ).forEach(function (node) {
+      node.textContent =
+        identity.fullAddress;
+    });
+
+
+    collectElements(
+      root,
+      "[data-config-map]"
+    ).forEach(function (node) {
+      if (node.tagName === "A") {
+        node.href = identity.mapHref;
+      }
     });
   }
+
+
+
+  function replaceIdentityText(root, pairs) {
+    const container =
+      root.nodeType === Node.DOCUMENT_NODE
+        ? root.documentElement
+        : root;
+
+    if (!container) {
+      return;
+    }
+
+    const walker =
+      document.createTreeWalker(
+        container,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode(node) {
+            const parent = node.parentElement;
+
+            if (!parent) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            if (
+              parent.closest(
+                "script, style, noscript, template"
+              )
+            ) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        }
+      );
+
+    const textNodes = [];
+
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach(function (node) {
+      const nextValue =
+        replaceIdentityString(
+          node.nodeValue,
+          pairs
+        );
+
+      if (nextValue !== node.nodeValue) {
+        node.nodeValue = nextValue;
+      }
+    });
+  }
+
+
+
+  function replaceIdentityAttributes(
+    root,
+    identity,
+    pairs
+  ) {
+    collectElements(
+      root,
+      "[alt], [title], [aria-label], meta[content], [placeholder]"
+    ).forEach(function (node) {
+      [
+        "alt",
+        "title",
+        "aria-label",
+        "content",
+        "placeholder"
+      ].forEach(function (attribute) {
+        if (!node.hasAttribute(attribute)) {
+          return;
+        }
+
+        const currentValue =
+          node.getAttribute(attribute);
+
+        const nextValue =
+          replaceIdentityString(
+            currentValue,
+            pairs
+          );
+
+        if (nextValue !== currentValue) {
+          node.setAttribute(
+            attribute,
+            nextValue
+          );
+        }
+      });
+    });
+
+
+    collectElements(
+      root,
+      "a[href]"
+    ).forEach(function (link) {
+      const href =
+        link.getAttribute("href") || "";
+
+      if (
+        href ===
+        ORIGINAL_SITE_IDENTITY.emailHref
+      ) {
+        link.setAttribute(
+          "href",
+          identity.emailHref
+        );
+
+        return;
+      }
+
+      if (
+        ORIGINAL_SITE_IDENTITY.phoneHref &&
+        href === ORIGINAL_SITE_IDENTITY.phoneHref
+      ) {
+        link.setAttribute(
+          "href",
+          identity.phoneHref
+        );
+
+        return;
+      }
+
+      if (
+        href ===
+        ORIGINAL_SITE_IDENTITY.mapHref
+      ) {
+        link.setAttribute(
+          "href",
+          identity.mapHref
+        );
+
+        return;
+      }
+
+      const nextHref =
+        replaceIdentityString(
+          href,
+          pairs
+        );
+
+      if (nextHref !== href) {
+        link.setAttribute(
+          "href",
+          nextHref
+        );
+      }
+    });
+  }
+
+
+  function replaceStructuredData(root, pairs) {
+    collectElements(
+      root,
+      'script[type="application/ld+json"]'
+    ).forEach(function (script) {
+      const currentValue =
+        script.textContent || "";
+
+      const nextValue =
+        replaceIdentityString(
+          currentValue,
+          pairs
+        );
+
+      if (nextValue !== currentValue) {
+        script.textContent = nextValue;
+      }
+    });
+  }
+
+
+
+  function updateBrandImages(root, identity) {
+    collectElements(
+      root,
+      ".nl-logo img"
+    ).forEach(function (image) {
+      image.src = identity.logoSrc;
+      image.alt = identity.logoAlt;
+    });
+
+
+    collectElements(
+      root,
+      ".nl-logo"
+    ).forEach(function (logo) {
+      logo.setAttribute(
+        "aria-label",
+        `${identity.brandName} home`
+      );
+    });
+
+
+    collectElements(
+      root,
+      `img[src="${ORIGINAL_SITE_IDENTITY.markSrc}"]`
+    ).forEach(function (image) {
+      image.src = identity.markSrc;
+    });
+  }
+
+
+
+  let identityIsApplying = false;
+
+  function applySiteIdentity(root = document) {
+    if (identityIsApplying) {
+      return;
+    }
+
+    identityIsApplying = true;
+
+    try {
+      const identity =
+        prepareSiteIdentity();
+
+      const pairs =
+        createIdentityPairs(identity);
+
+      applyConfigBindings(
+        root,
+        identity
+      );
+
+      replaceIdentityText(
+        root,
+        pairs
+      );
+
+      replaceIdentityAttributes(
+        root,
+        identity,
+        pairs
+      );
+
+      replaceStructuredData(
+        root,
+        pairs
+      );
+
+      updateBrandImages(
+        root,
+        identity
+      );
+    } finally {
+      identityIsApplying = false;
+    }
+  }
+
+
+
+  let identityObserver = null;
+  let identityFrame = 0;
+
+  function observeSiteIdentity() {
+    if (
+      identityObserver ||
+      !document.documentElement
+    ) {
+      return;
+    }
+
+    identityObserver =
+      new MutationObserver(function (mutations) {
+        if (identityIsApplying) {
+          return;
+        }
+
+        const addedRoots = new Set();
+
+        mutations.forEach(function (mutation) {
+          mutation.addedNodes.forEach(function (node) {
+            if (
+              node.nodeType === Node.ELEMENT_NODE
+            ) {
+              addedRoots.add(node);
+            }
+          });
+        });
+
+        if (!addedRoots.size) {
+          return;
+        }
+
+        cancelAnimationFrame(identityFrame);
+
+        identityFrame =
+          requestAnimationFrame(function () {
+            addedRoots.forEach(function (root) {
+              applySiteIdentity(root);
+            });
+          });
+      });
+
+    identityObserver.observe(
+      document.documentElement,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+  }
+
+
+
+  window.NexlocalIdentity = {
+    apply: applySiteIdentity,
+    get: prepareSiteIdentity
+  };
 
   function initHeader() {
     const header = document.querySelector("[data-header]");
@@ -255,16 +908,42 @@
   }
 
   function boot() {
+    /*
+     * Сначала создаём emailHref, phoneHref,
+     * fullAddress и mapHref из config.
+     */
+    prepareSiteIdentity();
+
     renderHeader();
     renderFooter();
-    injectConfigValues();
+
+    /*
+     * Меняем данные во всём существующем HTML.
+     */
+    applySiteIdentity(document);
+
     initHeader();
     initAccordions();
     initCookieConsent();
     initReveal();
     initAos();
+
     runPageInitializers();
-    document.documentElement.classList.add("is-ready");
+
+    /*
+     * Страничные скрипты могли добавить новые карточки,
+     * секции или тексты.
+     */
+    applySiteIdentity(document);
+
+    /*
+     * Следим за будущими динамическими элементами.
+     */
+    observeSiteIdentity();
+
+    document.documentElement.classList.add(
+      "is-ready"
+    );
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
