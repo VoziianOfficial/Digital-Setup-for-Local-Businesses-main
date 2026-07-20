@@ -892,11 +892,13 @@ p {
 
 .nl-internal-hero__cube {
   position: absolute;
-  inset: auto 6vw 10% auto;
+  inset: 62% auto auto 58%;
   z-index: 3;
   width: clamp(90px, 11vw, 170px);
-  opacity: .8;
-  transform: rotate(-8deg);
+  opacity: .82;
+  filter: drop-shadow(0 22px 38px rgba(0, 0, 0, .28));
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-8deg);
 }
 
 .nl-breadcrumbs {
@@ -1112,6 +1114,13 @@ p {
 
   .nl-internal-hero p {
     max-width: 42ch;
+  }
+
+  .nl-internal-hero__cube {
+    inset: auto auto 2.5rem 50%;
+    width: clamp(86px, 18vw, 130px);
+    opacity: .34;
+    transform: translateX(-50%) rotate(-8deg);
   }
 }
 
