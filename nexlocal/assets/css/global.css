@@ -285,9 +285,7 @@ p {
     box-shadow .3s ease;
 }
 
-/* =========================================================
-   REAL STICKY HEADER WRAPPER
-========================================================= */
+
 
 [data-site-header] {
   position: sticky !important;

@@ -182,12 +182,12 @@
     banner.innerHTML = `<div><strong>Cookie preference</strong><p>${escapeHtml(config.cookie && config.cookie.message || "")}</p><a href="cookie-policy.html">Cookie Policy</a></div><div class="nl-cookie__actions"><button class="nl-button nl-button--outline" type="button" data-cookie-choice="declined">${escapeHtml(config.cookie && config.cookie.rejectLabel || "Decline")}</button><button class="nl-button nl-button--primary" type="button" data-cookie-choice="accepted">${escapeHtml(config.cookie && config.cookie.acceptLabel || "Accept")}</button></div>`;
     document.body.appendChild(banner);
     banner.querySelectorAll("[data-cookie-choice]").forEach((button) => button.addEventListener("click", () => {
-      try { localStorage.setItem(key, button.dataset.cookieChoice); } catch (error) { /* preference remains session-only */ }
+      try { localStorage.setItem(key, button.dataset.cookieChoice); } catch (error) { }
       banner.hidden = true;
     }));
     window.NexlocalCookieConsent = {
       reset() {
-        try { localStorage.removeItem(key); } catch (error) { /* no-op */ }
+        try { localStorage.removeItem(key); } catch (error) { }
         banner.hidden = false;
         const firstButton = banner.querySelector("button");
         if (firstButton) firstButton.focus();

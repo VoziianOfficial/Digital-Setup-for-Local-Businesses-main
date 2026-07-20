@@ -379,9 +379,9 @@
             return;
         }
 
-        /*
-         * Защита от повторной инициализации.
-         */
+
+
+
         if (
             root.dataset.showcaseInitialized ===
             "true"
@@ -499,10 +499,10 @@
     }
 
 
-    /*
-     * Используем твою единую систему
-     * инициализации страниц.
-     */
+
+
+
+
     window.NEXLOCAL_PAGE_INITS =
         window.NEXLOCAL_PAGE_INITS || [];
 
@@ -511,10 +511,10 @@
     );
 
 
-    /*
-     * Резервный запуск на случай, если global.js
-     * не обработал NEXLOCAL_PAGE_INITS.
-     */
+
+
+
+
     function fallbackInit() {
         const root =
             document.querySelector(

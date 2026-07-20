@@ -67,7 +67,7 @@ if ($contentLength > 30000) {
     nexlocal_respond($config, 413, false, 'The submitted form is too large.');
 }
 
-// A filled honeypot is treated as accepted without sending or storing the submission.
+
 if (nexlocal_value('company') !== '') {
     nexlocal_respond($config, 200, true, 'Thank you. Your inquiry has been submitted successfully.');
 }
