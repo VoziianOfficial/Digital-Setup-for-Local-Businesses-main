@@ -207,14 +207,48 @@
 }
 
 .home-package {
+  isolation: isolate;
   position: relative;
+  overflow: hidden;
   min-height: 500px;
   padding: clamp(1.6rem, 3vw, 3rem);
   border-inline-end: 1px solid var(--color-line);
+  transition: transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease;
+}
+
+.home-package::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(135deg, rgba(185, 242, 39, .18), transparent 42%),
+    linear-gradient(0deg, rgba(93, 124, 255, .1), transparent 54%);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .28s ease, transform .28s ease;
+}
+
+.home-package::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .28s ease;
 }
 
 .home-package:last-child {
   border: 0;
+}
+
+.home-package > :not(.nl-text-link) {
+  position: relative;
+  z-index: 1;
 }
 
 .home-package--dark {
@@ -228,15 +262,18 @@
   color: var(--color-violet);
   font-size: .72rem;
   font-weight: 800;
+  transition: color .28s ease, transform .28s ease;
 }
 
 .home-package h3 {
   min-height: 2.3em;
+  transition: transform .28s ease;
 }
 
 .home-package p {
   margin-block: 1rem 1.5rem;
   font-size: .82rem;
+  transition: color .28s ease;
 }
 
 .home-package ul {
@@ -250,14 +287,58 @@
   content: "—";
   margin-inline-end: .5rem;
   color: var(--color-lime);
+  transition: margin-inline-end .28s ease;
 }
 
 .home-package .nl-text-link {
   position: absolute;
+  z-index: 1;
   inset: auto auto 2rem clamp(1.6rem, 3vw, 3rem);
+  transition: color .28s ease, transform .28s ease;
+}
+
+.home-package:hover {
+  transform: translateY(-8px);
+  border-color: transparent;
+  background: var(--color-white);
+  box-shadow: 0 20px 45px rgba(16, 21, 19, .1);
+}
+
+.home-package:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-package:hover::after {
+  transform: scaleX(1);
+}
+
+.home-package:hover .home-package__number {
+  color: var(--color-dark);
+  transform: translateY(-4px);
+}
+
+.home-package:hover h3,
+.home-package:hover .nl-text-link {
+  transform: translateX(6px);
+}
+
+.home-package:hover li::before {
+  margin-inline-end: .75rem;
+}
+
+.home-package--dark:hover {
+  background: var(--color-dark);
+  box-shadow: 0 22px 50px rgba(16, 21, 19, .18);
+}
+
+.home-package--dark:hover .home-package__number {
+  color: var(--color-lime);
 }
 
 .home-packages__custom {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: .9fr 1.1fr auto;
   gap: 2rem;
@@ -266,6 +347,49 @@
   background: var(--color-violet-soft);
   border: 1px solid var(--color-line);
   border-block-start: 0;
+  transition: transform .28s ease, background .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+
+.home-packages__custom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(185, 242, 39, .3), transparent 34%),
+    linear-gradient(135deg, rgba(93, 124, 255, .14), transparent 58%);
+  opacity: 0;
+  transition: opacity .28s ease;
+}
+
+.home-packages__custom>* {
+  position: relative;
+  z-index: 1;
+}
+
+.home-packages__custom h3,
+.home-packages__custom .nl-number,
+.home-packages__custom .nl-button {
+  transition: transform .28s ease;
+}
+
+.home-packages__custom:hover {
+  transform: translateY(-6px);
+  background: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 18px 42px rgba(16, 21, 19, .1);
+}
+
+.home-packages__custom:hover::before {
+  opacity: 1;
+}
+
+.home-packages__custom:hover .nl-number,
+.home-packages__custom:hover h3 {
+  transform: translateX(6px);
+}
+
+.home-packages__custom:hover .nl-button {
+  transform: translateY(-2px);
 }
 
 .home-marquee {
@@ -607,6 +731,33 @@
 @media (prefers-reduced-motion: reduce) {
   .home-marquee__track {
     animation: none;
+  }
+
+  .home-package,
+  .home-package::before,
+  .home-package::after,
+  .home-package__number,
+  .home-package h3,
+  .home-package p,
+  .home-package li::before,
+  .home-package .nl-text-link,
+  .home-packages__custom,
+  .home-packages__custom::before,
+  .home-packages__custom h3,
+  .home-packages__custom .nl-number,
+  .home-packages__custom .nl-button {
+    transition: none;
+  }
+
+  .home-package:hover,
+  .home-package:hover .home-package__number,
+  .home-package:hover h3,
+  .home-package:hover .nl-text-link,
+  .home-packages__custom:hover,
+  .home-packages__custom:hover .nl-number,
+  .home-packages__custom:hover h3,
+  .home-packages__custom:hover .nl-button {
+    transform: none;
   }
 }
 
@@ -1274,5 +1425,555 @@
   .home-digital-paths__head h2 {
     width: 100%;
     max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   HOME SERVICE MOSAIC
+========================================================= */
+
+.home-service-mosaic {
+  position: relative;
+
+  padding-block:
+    clamp(3rem, 5vw, 5rem);
+
+  overflow: hidden;
+
+  background:
+    var(--color-background);
+}
+
+.home-service-mosaic__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap:
+    clamp(1rem, 1.8vw, 1.6rem);
+}
+
+
+/* =========================================================
+   TILE
+========================================================= */
+
+.home-service-tile {
+  position: relative;
+
+  display: flex;
+
+  min-width: 0;
+  min-height: 320px;
+
+  padding:
+    clamp(1.75rem, 3vw, 2.7rem);
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(22, 26, 24, 0.08);
+
+  border-radius:
+    clamp(1.25rem, 2vw, 2rem);
+
+  background:
+    var(--color-white);
+
+  color:
+    var(--color-dark);
+
+  isolation: isolate;
+
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease;
+}
+
+.home-service-tile:hover {
+  transform:
+    translateY(-7px);
+
+  border-color:
+    rgba(93, 124, 255, 0.28);
+
+  box-shadow:
+    0 28px 70px rgba(16, 21, 19, 0.13);
+}
+
+
+/* Decorative light */
+
+.home-service-tile::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  right: -20%;
+  bottom: -50%;
+
+  width: 70%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.14);
+
+  filter:
+    blur(8px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BACKGROUNDS
+========================================================= */
+
+.home-service-tile--lime {
+  background:
+    linear-gradient(145deg,
+      var(--color-lime),
+      #d3f67d);
+}
+
+.home-service-tile--dark {
+  border-color:
+    rgba(255, 255, 255, 0.1);
+
+  background:
+    var(--color-dark);
+
+  color:
+    var(--color-white);
+}
+
+.home-service-tile--gradient {
+  border-color:
+    rgba(255, 255, 255, 0.12);
+
+  background:
+    linear-gradient(125deg,
+      var(--color-dark) 5%,
+      #24443b 56%,
+      #a5bb8e 100%);
+
+  color:
+    var(--color-white);
+}
+
+.home-service-tile--gradient-reverse {
+  border-color:
+    rgba(255, 255, 255, 0.12);
+
+  background:
+    linear-gradient(125deg,
+      #153c33,
+      #416e60 48%,
+      #aebd9a);
+
+  color:
+    var(--color-white);
+}
+
+.home-service-tile--light {
+  background:
+    linear-gradient(145deg,
+      var(--color-white),
+      var(--color-surface-alt));
+}
+
+.home-service-tile--violet {
+  background:
+    linear-gradient(145deg,
+      var(--color-violet-soft),
+      #aebaff);
+
+  color:
+    var(--color-dark);
+}
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+.home-service-tile__copy {
+  position: relative;
+  z-index: 2;
+
+  width:
+    min(78%, 38ch);
+}
+
+.home-service-tile__number {
+  display: block;
+
+  margin-bottom:
+    clamp(1rem, 2vw, 1.5rem);
+
+  color:
+    var(--color-violet);
+
+  font-size: 0.66rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+}
+
+.home-service-tile--dark .home-service-tile__number,
+.home-service-tile--gradient .home-service-tile__number,
+.home-service-tile--gradient-reverse .home-service-tile__number {
+  color:
+    var(--color-lime);
+}
+
+.home-service-tile h3 {
+  width: 100%;
+  margin: 0;
+
+  color:
+    currentColor;
+
+  font-size:
+    clamp(1.45rem, 2vw, 2rem);
+
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+
+  text-wrap: balance;
+}
+
+.home-service-tile p {
+  width: 100%;
+
+  margin-top: 1.1rem;
+
+  color:
+    rgba(22, 26, 24, 0.67);
+
+  font-size:
+    clamp(0.9rem, 1vw, 1rem);
+
+  line-height: 1.75;
+}
+
+.home-service-tile--dark p,
+.home-service-tile--gradient p,
+.home-service-tile--gradient-reverse p {
+  color:
+    rgba(255, 255, 255, 0.68);
+}
+
+
+/* =========================================================
+   ROUND LINK
+========================================================= */
+
+.home-service-tile__link {
+  position: absolute;
+  z-index: 4;
+
+  left:
+    clamp(1.75rem, 3vw, 2.7rem);
+
+  bottom:
+    clamp(1.75rem, 3vw, 2.7rem);
+
+  display: grid;
+  place-items: center;
+
+  width: 58px;
+  height: 58px;
+
+  border:
+    1px solid rgba(16, 21, 19, 0.32);
+
+  border-radius: 50%;
+
+  background:
+    transparent;
+
+  color:
+    var(--color-dark);
+
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+
+.home-service-tile__link svg {
+  width: 20px;
+  height: 20px;
+
+  stroke-width: 1.8;
+}
+
+.home-service-tile__link:hover {
+  border-color:
+    var(--color-dark);
+
+  background:
+    var(--color-dark);
+
+  color:
+    var(--color-white);
+
+  transform:
+    rotate(7deg) scale(1.05);
+}
+
+.home-service-tile--dark .home-service-tile__link,
+.home-service-tile--gradient .home-service-tile__link,
+.home-service-tile--gradient-reverse .home-service-tile__link {
+  border-color:
+    rgba(255, 255, 255, 0.22);
+
+  color:
+    rgba(255, 255, 255, 0.72);
+}
+
+.home-service-tile--dark .home-service-tile__link:hover,
+.home-service-tile--gradient .home-service-tile__link:hover,
+.home-service-tile--gradient-reverse .home-service-tile__link:hover {
+  border-color:
+    var(--color-lime);
+
+  background:
+    var(--color-lime);
+
+  color:
+    var(--color-dark);
+}
+
+
+/* =========================================================
+   LARGE ICON
+========================================================= */
+
+.home-service-tile__icon {
+  position: absolute;
+  z-index: 1;
+
+  right:
+    clamp(1.5rem, 3vw, 2.7rem);
+
+  bottom:
+    clamp(1.5rem, 3vw, 2.4rem);
+
+  width:
+    clamp(84px, 8vw, 120px);
+
+  height:
+    clamp(84px, 8vw, 120px);
+
+  color:
+    rgba(16, 21, 19, 0.33);
+
+  transition:
+    transform 300ms ease,
+    color 300ms ease;
+}
+
+.home-service-tile__icon svg {
+  width: 100%;
+  height: 100%;
+
+  stroke-width: 1.65;
+}
+
+.home-service-tile--dark .home-service-tile__icon,
+.home-service-tile--gradient .home-service-tile__icon,
+.home-service-tile--gradient-reverse .home-service-tile__icon {
+  color:
+    rgba(255, 255, 255, 0.3);
+}
+
+.home-service-tile:hover .home-service-tile__icon {
+  color:
+    rgba(93, 124, 255, 0.58);
+
+  transform:
+    translateY(-5px) rotate(-4deg) scale(1.04);
+}
+
+.home-service-tile--dark:hover .home-service-tile__icon,
+.home-service-tile--gradient:hover .home-service-tile__icon,
+.home-service-tile--gradient-reverse:hover .home-service-tile__icon {
+  color:
+    rgba(185, 242, 39, 0.58);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 980px) {
+  .home-service-mosaic__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .home-service-tile {
+    min-height: 310px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+  .home-service-mosaic {
+    padding-block:
+      2.5rem;
+  }
+
+  .home-service-mosaic__grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 1rem;
+  }
+
+  .home-service-tile {
+    width: 100%;
+    min-width: 0;
+    min-height: 300px;
+
+    padding:
+      1.5rem;
+
+    border-radius:
+      1.3rem;
+  }
+
+  .home-service-tile__copy {
+    width: min(100%, 32ch);
+  }
+
+  .home-service-tile p {
+    max-width: 29ch;
+  }
+
+  .home-service-tile__link {
+    left: 1.5rem;
+    bottom: 1.5rem;
+
+    width: 52px;
+    height: 52px;
+  }
+
+  .home-service-tile__icon {
+    right: 1.25rem;
+    bottom: 1.25rem;
+
+    width: 82px;
+    height: 82px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .home-service-tile {
+    min-height: 320px;
+  }
+
+  .home-service-tile__icon {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-service-tile,
+  .home-service-tile__link,
+  .home-service-tile__icon {
+    transition: none;
+  }
+
+  .home-service-tile:hover,
+  .home-service-tile__link:hover,
+  .home-service-tile:hover .home-service-tile__icon {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   SERVICE TILE — PREVENT BUTTON OVERLAP
+========================================================= */
+
+.home-service-tile {
+  padding-bottom: clamp(7rem, 9vw, 8rem);
+}
+
+.home-service-tile__copy {
+  width: 100%;
+  max-width: 38ch;
+}
+
+.home-service-tile p {
+  margin-bottom: 0;
+}
+
+
+/* TABLET */
+
+@media (max-width: 980px) {
+  .home-service-tile {
+    padding-bottom: 7.5rem;
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 620px) {
+  .home-service-tile {
+    min-height: 330px;
+    padding:
+      1.5rem 1.5rem 6.75rem;
+  }
+
+  .home-service-tile__copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-service-tile p {
+    max-width: 100%;
+  }
+
+  .home-service-tile__link {
+    left: 1.5rem;
+    bottom: 1.4rem;
+  }
+
+  .home-service-tile__icon {
+    right: 1.25rem;
+    bottom: 1.25rem;
   }
 }
