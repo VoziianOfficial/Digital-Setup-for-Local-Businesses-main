@@ -1355,3 +1355,477 @@ function initServiceStory() {
 }
 
 document.addEventListener("DOMContentLoaded", initServiceStory);
+
+
+(function () {
+    "use strict";
+
+    const ICONS = [
+        `
+      <svg viewBox="0 0 48 48" fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+        <circle cx="24" cy="24" r="15"></circle>
+        <path d="m18 25 4 4 9-11"></path>
+      </svg>
+    `,
+        `
+      <svg viewBox="0 0 48 48" fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+        <circle cx="13" cy="24" r="4"></circle>
+        <circle cx="24" cy="13" r="4"></circle>
+        <circle cx="35" cy="24" r="4"></circle>
+        <circle cx="24" cy="35" r="4"></circle>
+        <path d="m16 21 5-5"></path>
+        <path d="m27 16 5 5"></path>
+        <path d="m32 27-5 5"></path>
+        <path d="m21 32-5-5"></path>
+      </svg>
+    `,
+        `
+      <svg viewBox="0 0 48 48" fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+        <path d="M8 37V25"></path>
+        <path d="M18 37V18"></path>
+        <path d="M28 37V11"></path>
+        <path d="M38 37V6"></path>
+        <path d="M6 41h36"></path>
+      </svg>
+    `
+    ];
+
+    const SERVICE_DIRECTIONS_CONTENT = {
+        "small-business-websites": {
+            eyebrow: "A clearer website foundation",
+            title: "Three areas that shape a useful business website.",
+            intro:
+                "Bring content, responsive behavior, and customer actions together in one clearer digital experience.",
+
+            cards: [
+                {
+                    title: "Information Structure",
+                    text:
+                        "Organize the business offer, service context, location, and practical details around real customer questions."
+                },
+                {
+                    title: "Responsive Journey",
+                    text:
+                        "Create a consistent experience across desktop, tablet, and mobile without hiding essential information."
+                },
+                {
+                    title: "Inquiry Foundation",
+                    text:
+                        "Connect important pages with forms, calls, booking actions, and useful measurement events."
+                }
+            ]
+        },
+
+        "google-business-profile-setup": {
+            eyebrow: "A clearer local presence",
+            title: "Three areas that shape useful local discovery.",
+            intro:
+                "Connect accurate public information with meaningful customer actions and responsible feedback workflows.",
+
+            cards: [
+                {
+                    title: "Accurate Business Details",
+                    text:
+                        "Organize categories, operating information, location or service area, hours, and contact pathways."
+                },
+                {
+                    title: "Local Discovery Path",
+                    text:
+                        "Help customers move from profile discovery to the website, directions, calls, or booking."
+                },
+                {
+                    title: "Review and Action Flow",
+                    text:
+                        "Consider review requests, profile updates, customer responses, and useful activity measurement."
+                }
+            ]
+        },
+
+        "online-booking-setup": {
+            eyebrow: "A clearer booking pathway",
+            title: "Three areas that make booking easier to understand.",
+            intro:
+                "Shape service choices, availability, and customer communication around the way the business actually operates.",
+
+            cards: [
+                {
+                    title: "Service and Availability",
+                    text:
+                        "Define which services can be booked, their duration, staff availability, and scheduling boundaries."
+                },
+                {
+                    title: "Booking Experience",
+                    text:
+                        "Make service selection, date selection, and customer details easier to complete across devices."
+                },
+                {
+                    title: "Confirmation and Follow-Up",
+                    text:
+                        "Clarify confirmation, reminders, rescheduling, cancellation, and any required human follow-up."
+                }
+            ]
+        },
+
+        "lead-forms-call-tracking": {
+            eyebrow: "A clearer inquiry pathway",
+            title: "Three areas that create more useful lead context.",
+            intro:
+                "Collect enough information for an appropriate response while keeping the customer journey understandable.",
+
+            cards: [
+                {
+                    title: "Focused Qualification",
+                    text:
+                        "Ask the questions needed for a useful response without turning the inquiry into a long application."
+                },
+                {
+                    title: "Routing and Call Context",
+                    text:
+                        "Clarify where forms and calls go, who owns the response, and what context should be retained."
+                },
+                {
+                    title: "Conversion Measurement",
+                    text:
+                        "Separate meaningful customer inquiries from incomplete forms, general visits, and accidental actions."
+                }
+            ]
+        },
+
+        "review-management": {
+            eyebrow: "A clearer feedback process",
+            title: "Three areas that support responsible review workflows.",
+            intro:
+                "Organize request timing, feedback pathways, and internal response ownership without artificial rating claims.",
+
+            cards: [
+                {
+                    title: "Request Timing",
+                    text:
+                        "Choose appropriate moments for requesting feedback based on the actual customer experience."
+                },
+                {
+                    title: "Feedback Pathways",
+                    text:
+                        "Help customers reach suitable public or private feedback options with clear, respectful communication."
+                },
+                {
+                    title: "Response Ownership",
+                    text:
+                        "Define who monitors feedback, prepares responses, and handles issues requiring internal attention."
+                }
+            ]
+        },
+
+        "email-sms-automation": {
+            eyebrow: "A clearer communication flow",
+            title: "Three areas that keep automated messages useful.",
+            intro:
+                "Connect permission, customer context, and human follow-up instead of sending unnecessary communication.",
+
+            cards: [
+                {
+                    title: "Permission-Aware Triggers",
+                    text:
+                        "Define when communication is appropriate and what customer action or event should start the workflow."
+                },
+                {
+                    title: "Clear Message Logic",
+                    text:
+                        "Keep each message focused on one purpose, one context, and one understandable next action."
+                },
+                {
+                    title: "Human Follow-Up",
+                    text:
+                        "Clarify when an automated sequence should stop and a customer response needs personal attention."
+                }
+            ]
+        },
+
+        "analytics-setup": {
+            eyebrow: "A clearer measurement foundation",
+            title: "Three areas that make analytics more useful.",
+            intro:
+                "Move beyond decorative numbers by connecting tracking with meaningful customer actions and business questions.",
+
+            cards: [
+                {
+                    title: "Meaningful Events",
+                    text:
+                        "Track customer actions such as calls, completed forms, bookings, directions, and other relevant outcomes."
+                },
+                {
+                    title: "Clean Reporting",
+                    text:
+                        "Use consistent event names and reduce duplicate or unclear measurements across the digital setup."
+                },
+                {
+                    title: "Decision Context",
+                    text:
+                        "Organize reports around customer friction, useful content, and areas that may deserve further attention."
+                }
+            ]
+        },
+
+        "crm-setup": {
+            eyebrow: "A clearer customer workflow",
+            title: "Three areas that make CRM organization more practical.",
+            intro:
+                "Connect customer information, responsibility, and next actions around the way the business actually works.",
+
+            cards: [
+                {
+                    title: "Pipeline Structure",
+                    text:
+                        "Define stages that reflect how inquiries and customer activity move through the real business process."
+                },
+                {
+                    title: "Ownership and Tasks",
+                    text:
+                        "Clarify who owns each inquiry, follow-up task, update, and next customer action."
+                },
+                {
+                    title: "Connected Customer Context",
+                    text:
+                        "Bring useful form, booking, communication, and analytics context into one understandable workflow."
+                }
+            ]
+        }
+    };
+
+    const FALLBACK_CONTENT = {
+        eyebrow: "Three practical directions",
+        title: "Focus on the parts of the setup that matter most.",
+        intro:
+            "Explore connected areas that may create a clearer customer journey and a more practical workflow.",
+
+        cards: [
+            {
+                title: "Clarify the Starting Point",
+                text:
+                    "Review the current customer experience, systems, and practical business requirements."
+            },
+            {
+                title: "Connect the Journey",
+                text:
+                    "Organize discovery, customer action, communication, and follow-up as one pathway."
+            },
+            {
+                title: "Measure Useful Activity",
+                text:
+                    "Focus on customer actions and information that can support a practical next decision."
+            }
+        ]
+    };
+
+    function getServiceDirectionsSlug() {
+        const bodySlug =
+            document.body.dataset.serviceSlug;
+
+        if (bodySlug) {
+            return bodySlug;
+        }
+
+        const fileName =
+            window.location.pathname
+                .split("/")
+                .pop()
+                .split("?")[0]
+                .split("#")[0];
+
+        return fileName.replace(/\.html$/i, "");
+    }
+
+    function createDirectionCard(item, index, slug) {
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "service-direction-card";
+
+        if (index === 1) {
+            card.classList.add(
+                "service-direction-card--featured"
+            );
+        }
+
+        if (index === 2) {
+            card.classList.add(
+                "service-direction-card--dark"
+            );
+        }
+
+        card.setAttribute("data-reveal", "");
+
+        const number =
+            document.createElement("span");
+
+        number.className =
+            "service-direction-card__number";
+
+        number.textContent =
+            String(index + 1).padStart(2, "0");
+
+        const icon =
+            document.createElement("span");
+
+        icon.className =
+            "service-direction-card__icon";
+
+        icon.setAttribute("aria-hidden", "true");
+
+        icon.innerHTML =
+            ICONS[index % ICONS.length];
+
+        const heading =
+            document.createElement("h3");
+
+        heading.textContent =
+            item.title;
+
+        const text =
+            document.createElement("p");
+
+        text.textContent =
+            item.text;
+
+        const link =
+            document.createElement("a");
+
+        link.className =
+            "service-direction-card__link";
+
+        link.href =
+            "contact.html?request=service&service=" +
+            encodeURIComponent(slug);
+
+        link.innerHTML =
+            "Discuss this area " +
+            '<span aria-hidden="true">↗</span>';
+
+        card.append(
+            number,
+            icon,
+            heading,
+            text,
+            link
+        );
+
+        return card;
+    }
+
+    function initServiceDirections() {
+        const section =
+            document.querySelector(
+                "[data-service-directions]"
+            );
+
+        if (
+            !section ||
+            section.dataset.directionsInitialized === "true"
+        ) {
+            return;
+        }
+
+        const slug =
+            getServiceDirectionsSlug();
+
+        const content =
+            SERVICE_DIRECTIONS_CONTENT[slug] ||
+            FALLBACK_CONTENT;
+
+        const eyebrow =
+            section.querySelector(
+                "[data-service-directions-eyebrow]"
+            );
+
+        const title =
+            section.querySelector(
+                "[data-service-directions-title]"
+            );
+
+        const intro =
+            section.querySelector(
+                "[data-service-directions-intro]"
+            );
+
+        const grid =
+            section.querySelector(
+                "[data-service-directions-grid]"
+            );
+
+        const footerLink =
+            section.querySelector(
+                "[data-service-directions-cta]"
+            );
+
+        if (eyebrow) {
+            eyebrow.textContent =
+                content.eyebrow;
+        }
+
+        if (title) {
+            title.textContent =
+                content.title;
+        }
+
+        if (intro) {
+            intro.textContent =
+                content.intro;
+        }
+
+        if (grid) {
+            const fragment =
+                document.createDocumentFragment();
+
+            content.cards.forEach(function (item, index) {
+                fragment.appendChild(
+                    createDirectionCard(
+                        item,
+                        index,
+                        slug
+                    )
+                );
+            });
+
+            grid.replaceChildren(fragment);
+        }
+
+        if (footerLink) {
+            footerLink.href =
+                "contact.html?request=service&service=" +
+                encodeURIComponent(slug);
+        }
+
+        section.dataset.directionsInitialized =
+            "true";
+    }
+
+    window.NEXLOCAL_PAGE_INITS =
+        window.NEXLOCAL_PAGE_INITS || [];
+
+    window.NEXLOCAL_PAGE_INITS.push(
+        initServiceDirections
+    );
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initServiceDirections,
+            { once: true }
+        );
+    } else {
+        initServiceDirections();
+    }
+})();
