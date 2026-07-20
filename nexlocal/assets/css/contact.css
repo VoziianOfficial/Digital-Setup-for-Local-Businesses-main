@@ -152,15 +152,15 @@
 }
 
 .contact-entry-card--service .contact-entry-card__media {
-    background-image: url("../images/home/local-owner-office.jpg");
+    background-image: url("../images/home/card-9.jpg");
 }
 
 .contact-entry-card--audit .contact-entry-card__media {
-    background-image: url("../images/services/clinic-manager-tablet.jpg");
+    background-image: url("../images/home/card-10.jpg");
 }
 
 .contact-entry-card--collaboration .contact-entry-card__media {
-    background-image: url("../images/services/salon-owner-schedule.jpg");
+    background-image: url("../images/home/card-11.jpg");
 }
 
 .contact-entry-card:hover .contact-entry-card__media {
@@ -986,7 +986,7 @@
         linear-gradient(180deg,
             rgba(16, 21, 19, .18),
             rgba(16, 21, 19, .92)),
-        url("../images/services/clinic-manager-tablet.jpg") center / cover no-repeat;
+        url("../images/home/card-12.jpg") center / cover no-repeat;
     color: var(--color-white);
 }
 
@@ -2254,7 +2254,7 @@
 
     background:
         linear-gradient(180deg, rgba(16, 21, 19, 0.58), rgba(16, 21, 19, 0.84)),
-        url("../images/contact/contact-form-side.webp");
+        url("../images/home/card-13.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

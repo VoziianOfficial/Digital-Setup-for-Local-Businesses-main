@@ -517,7 +517,7 @@
                 "Create a clear mobile journey from discovery to contact.",
                 "Connect important customer actions with practical measurement."
             ],
-            image: "assets/images/home/local-owner-office.jpg",
+            image: "assets/images/home/card-6.jpg",
             alt: "Local business team reviewing a website and customer journey"
         },
 
@@ -533,7 +533,7 @@
                 "Connect profile discovery to the most relevant customer action.",
                 "Plan review and measurement workflows around real activity."
             ],
-            image: "assets/images/home/cafe-owner-tablet.jpg",
+            image: "assets/images/home/card-7.jpg",
             alt: "Local business owner reviewing public business information"
         },
 
@@ -549,7 +549,7 @@
                 "Clarify availability, confirmation, and scheduling boundaries.",
                 "Connect booking actions with the wider customer journey."
             ],
-            image: "assets/images/services/salon-owner-schedule.jpg",
+            image: "assets/images/home/card-8.jpg",
             alt: "Business owner organizing an online appointment schedule"
         },
 
@@ -565,7 +565,7 @@
                 "Route forms and calls to a clear owner or workflow.",
                 "Measure meaningful inquiries rather than decorative activity."
             ],
-            image: "assets/images/services/home-service-owner-workshop.jpg",
+            image: "assets/images/home/card-9.jpg",
             alt: "Local business owner organizing customer inquiries"
         },
 
@@ -581,7 +581,7 @@
                 "Keep communication clear, relevant, and permission-aware.",
                 "Organize monitoring, responses, and internal follow-up."
             ],
-            image: "assets/images/home/cafe-owner-tablet.jpg",
+            image: "assets/images/home/card-10.jpg",
             alt: "Business owner reviewing customer feedback information"
         },
 
@@ -597,7 +597,7 @@
                 "Keep every message focused on one useful customer action.",
                 "Plan what happens after a response or completed step."
             ],
-            image: "assets/images/services/salon-owner-schedule.jpg",
+            image: "assets/images/home/card-11.jpg",
             alt: "Business owner planning customer communication workflows"
         },
 
@@ -613,7 +613,7 @@
                 "Reduce duplicated, unclear, or decorative tracking.",
                 "Build reporting around questions the business can act on."
             ],
-            image: "assets/images/services/clinic-manager-tablet.jpg",
+            image: "assets/images/home/card-12.jpg",
             alt: "Business manager reviewing analytics and customer activity"
         },
 
@@ -629,7 +629,7 @@
                 "Assign ownership for responses, tasks, and follow-up.",
                 "Connect useful context from forms, booking, and communication."
             ],
-            image: "assets/images/services/clinic-manager-tablet.jpg",
+            image: "assets/images/home/card-13.jpg",
             alt: "Business manager reviewing CRM and customer workflow information"
         }
     };
@@ -646,7 +646,7 @@
             "Identify practical friction and priorities.",
             "Explore a suitable next-step pathway."
         ],
-        image: "assets/images/home/local-owner-office.jpg",
+        image: "assets/images/home/card-14.jpg",
         alt: "Local business team reviewing digital setup priorities"
     };
 
@@ -786,7 +786,7 @@
         "small-business-websites": {
             title: "What a business website",
             accent: "should clarify",
-            image: "assets/images/home/local-owner-office.jpg",
+            image: "assets/images/home/card-1.jpg",
             alt: "Local business team reviewing website priorities",
 
             slides: [
@@ -811,7 +811,7 @@
         "google-business-profile-setup": {
             title: "What local profile setup",
             accent: "should clarify",
-            image: "assets/images/home/cafe-owner-tablet.jpg",
+            image: "assets/images/home/card-2.jpg",
             alt: "Local business owner reviewing profile information",
 
             slides: [
@@ -836,7 +836,7 @@
         "online-booking-setup": {
             title: "What online booking",
             accent: "should simplify",
-            image: "assets/images/services/salon-owner-schedule.jpg",
+            image: "assets/images/home/card-3.jpg",
             alt: "Business owner reviewing appointment availability",
 
             slides: [
@@ -862,7 +862,7 @@
             title: "What an inquiry pathway",
             accent: "should collect",
             image:
-                "assets/images/services/home-service-owner-workshop.jpg",
+                "assets/images/home/card-4.jpg",
             alt: "Business owner reviewing customer inquiry information",
 
             slides: [
@@ -887,7 +887,7 @@
         "review-management": {
             title: "What a feedback workflow",
             accent: "should respect",
-            image: "assets/images/home/cafe-owner-tablet.jpg",
+            image: "assets/images/home/card-5.jpg",
             alt: "Business owner reviewing customer feedback",
 
             slides: [
@@ -913,7 +913,7 @@
             title: "What automated communication",
             accent: "should support",
             image:
-                "assets/images/services/salon-owner-schedule.jpg",
+                "assets/images/home/card-6.jpg",
             alt: "Business owner planning customer communication",
 
             slides: [
@@ -939,7 +939,7 @@
             title: "What useful analytics",
             accent: "should reveal",
             image:
-                "assets/images/services/clinic-manager-tablet.jpg",
+                "assets/images/home/card-7.jpg",
             alt: "Business manager reviewing analytics information",
 
             slides: [
@@ -965,7 +965,7 @@
             title: "What a CRM workflow",
             accent: "should organize",
             image:
-                "assets/images/services/clinic-manager-tablet.jpg",
+                "assets/images/home/card-8.jpg",
             alt: "Business manager reviewing customer workflow information",
 
             slides: [
@@ -992,7 +992,7 @@
         title: "What this digital service",
         accent: "should clarify",
         image:
-            "assets/images/home/local-owner-office.jpg",
+            "assets/images/home/card-9.jpg",
         alt:
             "Local business team reviewing digital setup priorities",
 
@@ -1261,7 +1261,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A clearer website can help customers understand and act faster.",
         text1: "This pathway helps local businesses explore a website structure that explains the offer clearly, supports trust, and creates a more practical route to inquiry.",
         text2: "The focus is not just visual presentation, but useful page hierarchy, a clearer next step, and a digital foundation that supports how the business actually works.",
-        image: "assets/images/home/local-owner-office.jpg",
+        image: "assets/images/home/card-10.jpg",
         alt: "Local business owner reviewing website setup options"
     },
 
@@ -1270,7 +1270,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A better profile setup can make local discovery more consistent.",
         text1: "This pathway helps organize business information, categories, service areas, and profile clarity so customers can more easily understand what the business offers.",
         text2: "The goal is to reduce confusion, improve consistency, and create a more reliable local presence across the places customers already search.",
-        image: "assets/images/home/cafe-owner-tablet.jpg",
+        image: "assets/images/home/card-11.jpg",
         alt: "Business owner reviewing profile and local visibility details"
     },
 
@@ -1279,7 +1279,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A simpler booking flow can reduce friction before the first appointment.",
         text1: "This service explores practical booking pathways that help customers choose, schedule, and confirm appointments with less confusion.",
         text2: "The main goal is to support a clearer experience for both the customer and the business while keeping the process easier to manage.",
-        image: "assets/images/services/salon-owner-schedule.jpg",
+        image: "assets/images/home/card-12.jpg",
         alt: "Business owner managing online appointment setup"
     },
 
@@ -1288,7 +1288,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A clearer inquiry pathway can make demand easier to capture and follow.",
         text1: "This service helps businesses review how inquiries are collected, routed, and measured across forms, calls, and important landing points.",
         text2: "The focus is on reducing friction, improving visibility, and creating a more useful structure for future decisions.",
-        image: "assets/images/services/home-service-owner-workshop.jpg",
+        image: "assets/images/home/card-13.jpg",
         alt: "Business owner reviewing inquiry and lead pathways"
     },
 
@@ -1297,7 +1297,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A better review workflow can make customer feedback easier to organize.",
         text1: "This pathway explores when requests are sent, how responses are managed, and how feedback can be handled more consistently.",
         text2: "The goal is to support a more responsible and practical process without artificial claims, ratings, or outcomes.",
-        image: "assets/images/home/cafe-owner-tablet.jpg",
+        image: "assets/images/home/card-14.jpg",
         alt: "Business owner reviewing customer feedback workflow"
     },
 
@@ -1306,7 +1306,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A more useful follow-up pathway can improve customer communication.",
         text1: "This service helps businesses explore message timing, workflow triggers, and communication sequences that feel more relevant and easier to manage.",
         text2: "The result is a more structured pathway for reminders, updates, and customer follow-up built around real business needs.",
-        image: "assets/images/home/cafe-owner-tablet.jpg",
+        image: "assets/images/home/card-1.jpg",
         alt: "Business owner reviewing digital communication workflows"
     },
 
@@ -1315,7 +1315,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A clearer analytics setup can make decisions more grounded.",
         text1: "This pathway focuses on event tracking, conversions, and useful reporting structures so the business can better understand what is actually happening.",
         text2: "The purpose is to reduce guesswork and create a more practical measurement foundation for future improvements.",
-        image: "assets/images/home/local-owner-office.jpg",
+        image: "assets/images/home/card-2.jpg",
         alt: "Business team reviewing analytics and reporting setup"
     },
 
@@ -1324,7 +1324,7 @@ const SERVICE_STORY_CONTENT = {
         title: "A more connected CRM setup can make customer handling easier to manage.",
         text1: "This service explores how leads, follow-up, internal tasks, and customer records can be organized into a clearer day-to-day workflow.",
         text2: "The goal is to create a more useful operational structure that supports visibility, consistency, and easier coordination.",
-        image: "assets/images/services/home-service-owner-workshop.jpg",
+        image: "assets/images/home/card-3.jpg",
         alt: "Business team organizing leads and customer workflows"
     }
 };

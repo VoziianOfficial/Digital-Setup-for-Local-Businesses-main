@@ -5,7 +5,7 @@
         "small-business-websites": {
             category: "presence",
             label: "Presence",
-            image: "assets/images/home/local-owner-office.jpg",
+            image: "assets/images/home/card-3.jpg",
             imageAlt:
                 "Local business owner reviewing a website and digital information"
         },
@@ -13,7 +13,7 @@
         "google-business-profile-setup": {
             category: "presence",
             label: "Presence",
-            image: "assets/images/home/cafe-owner-tablet.jpg",
+            image: "assets/images/home/card-4.jpg",
             imageAlt:
                 "Local business owner reviewing public business information"
         },
@@ -21,7 +21,7 @@
         "online-booking-setup": {
             category: "lead-flow",
             label: "Lead Flow",
-            image: "assets/images/services/salon-owner-schedule.jpg",
+            image: "assets/images/home/card-5.jpg",
             imageAlt:
                 "Business owner organizing customer appointments"
         },
@@ -30,7 +30,7 @@
             category: "lead-flow",
             label: "Lead Flow",
             image:
-                "assets/images/services/home-service-owner-workshop.jpg",
+                "assets/images/home/card-6.jpg",
             imageAlt:
                 "Home service business owner organizing customer inquiries"
         },
@@ -39,7 +39,7 @@
             category: "communication",
             label: "Communication",
             image:
-                "assets/images/services/clinic-manager-tablet.jpg",
+                "assets/images/home/card-7.jpg",
             imageAlt:
                 "Local business manager reviewing customer information"
         },
@@ -47,7 +47,7 @@
         "email-sms-automation": {
             category: "communication",
             label: "Communication",
-            image: "assets/images/home/cafe-owner-tablet.jpg",
+            image: "assets/images/home/card-8.jpg",
             imageAlt:
                 "Business owner reviewing customer communication"
         },
@@ -55,7 +55,7 @@
         "analytics-setup": {
             category: "operations",
             label: "Operations",
-            image: "assets/images/home/local-owner-office.jpg",
+            image: "assets/images/home/card-9.jpg",
             imageAlt:
                 "Local business team reviewing digital performance information"
         },
@@ -64,7 +64,7 @@
             category: "operations",
             label: "Operations",
             image:
-                "assets/images/services/home-service-owner-workshop.jpg",
+                "assets/images/home/card-10.jpg",
             imageAlt:
                 "Local business team organizing customer requests and workflows"
         }
@@ -86,7 +86,7 @@
             category: "operations",
             label: "Digital Setup",
             image:
-                "assets/images/home/local-owner-office.jpg",
+                "assets/images/home/card-11.jpg",
             imageAlt:
                 "Local business digital setup planning"
         };

@@ -293,7 +293,7 @@
         linear-gradient(135deg,
             rgba(185, 242, 39, .24),
             transparent 52%),
-        url("../images/home/local-owner-office.jpg") center / cover no-repeat;
+        url("../images/home/card-12.jpg") center / cover no-repeat;
     box-shadow:
         0 28px 78px rgba(16, 21, 19, .18);
     color: var(--color-white);

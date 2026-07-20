@@ -1,10 +1,20 @@
 {
-  "generatedWith": "Built-in OpenAI image generation",
+  "sourceFolder": "assets/images/home",
+  "distribution": "Home folder images are rotated across page and section media slots.",
   "assets": [
-    { "filename": "home/local-owner-office.jpg", "page": "Home and shared internal heroes", "section": "Homepage hero", "subject": "Independent business owner planning beside a laptop", "cropDirection": "Subject right; preserve negative space left", "aspectRatio": "1.90:1", "alt": "A local business owner organizing appointments beside a laptop in a quiet office" },
-    { "filename": "home/cafe-owner-tablet.jpg", "page": "Home and Services", "section": "Connected foundation and business explorer", "subject": "Cafe owner checking a tablet at the counter", "cropDirection": "Center-right subject; retain counter context", "aspectRatio": "3:2", "alt": "A cafe owner checking a tablet while preparing the counter" },
-    { "filename": "services/salon-owner-schedule.jpg", "page": "Home, About and Booking", "section": "Service explorer and category panels", "subject": "Salon owner organizing appointments", "cropDirection": "Subject left; retain salon mirrors", "aspectRatio": "4:3", "alt": "A salon owner organizing a booking schedule at a laptop" },
-    { "filename": "services/clinic-manager-tablet.jpg", "page": "Home, Audit, Booking and Automation", "section": "Audit CTA and clinic scenarios", "subject": "Clinic manager reviewing a tablet", "cropDirection": "Subject left; retain room context", "aspectRatio": "1.82:1", "alt": "A clinic manager checking appointment information on a tablet" },
-    { "filename": "services/home-service-owner-workshop.jpg", "page": "Home, Services and CRM", "section": "Principles and lead-flow scenarios", "subject": "Home-services business owner organizing job requests", "cropDirection": "Subject center; retain workshop context", "aspectRatio": "3:2", "alt": "A home services business owner organizing job inquiries" }
+    { "filename": "home/card-1.jpg", "width": 1675, "height": 939, "aspectRatio": "1.78:1" },
+    { "filename": "home/card-2.jpg", "width": 1672, "height": 941, "aspectRatio": "1.78:1" },
+    { "filename": "home/card-3.jpg", "width": 1672, "height": 941, "aspectRatio": "1.78:1" },
+    { "filename": "home/card-4.jpg", "width": 1672, "height": 941, "aspectRatio": "1.78:1" },
+    { "filename": "home/card-5.jpg", "width": 1086, "height": 1448, "aspectRatio": "0.75:1" },
+    { "filename": "home/card-6.jpg", "width": 1254, "height": 1254, "aspectRatio": "1:1" },
+    { "filename": "home/card-7.jpg", "width": 1448, "height": 1086, "aspectRatio": "1.33:1" },
+    { "filename": "home/card-8.jpg", "width": 1448, "height": 1086, "aspectRatio": "1.33:1" },
+    { "filename": "home/card-9.jpg", "width": 1254, "height": 1254, "aspectRatio": "1:1" },
+    { "filename": "home/card-10.jpg", "width": 1254, "height": 1254, "aspectRatio": "1:1" },
+    { "filename": "home/card-11.jpg", "width": 1254, "height": 1254, "aspectRatio": "1:1" },
+    { "filename": "home/card-12.jpg", "width": 1672, "height": 941, "aspectRatio": "1.78:1" },
+    { "filename": "home/card-13.jpg", "width": 1672, "height": 941, "aspectRatio": "1.78:1" },
+    { "filename": "home/card-14.jpg", "width": 1672, "height": 941, "aspectRatio": "1.78:1" }
   ]
 }
