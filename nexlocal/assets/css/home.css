@@ -2491,3 +2491,447 @@
     transform: none;
   }
 }
+
+/* =========================================================
+   HOME BUSINESS FOCUS
+========================================================= */
+
+.home-business-focus {
+  position: relative;
+  overflow: hidden;
+
+  padding-block:
+    clamp(3.5rem, 6vw, 6rem);
+
+  background:
+    var(--color-white);
+}
+
+
+/* Decorative background lines */
+
+.home-business-focus::before {
+  content: "";
+
+  position: absolute;
+
+  top: 10%;
+  left: -8rem;
+
+  width: 260px;
+  height: 260px;
+
+  border:
+    1px solid rgba(93, 124, 255, 0.16);
+
+  transform:
+    rotate(24deg);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.home-business-focus__grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.72fr) minmax(0, 1.28fr);
+
+  gap:
+    clamp(3rem, 7vw, 8rem);
+
+  align-items: center;
+}
+
+.home-business-focus__grid>* {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.home-business-focus__content {
+  width: 100%;
+  max-width: 620px;
+}
+
+.home-business-focus__content .nl-eyebrow {
+  margin-bottom: 1.25rem;
+}
+
+.home-business-focus__content h2 {
+  width: 100%;
+  max-width: 13ch;
+
+  margin: 0;
+
+  color:
+    var(--color-dark);
+
+  font-size:
+    clamp(3rem, 4.7vw, 5.3rem);
+
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+
+  text-wrap: balance;
+}
+
+.home-business-focus__content>p {
+  width: min(58ch, 100%);
+
+  margin-top:
+    clamp(1.5rem, 3vw, 2rem);
+
+  color:
+    var(--color-muted);
+
+  font-size:
+    clamp(0.98rem, 1.1vw, 1.08rem);
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   EDITORIAL LIST
+========================================================= */
+
+.home-business-focus__list {
+  display: grid;
+
+  width: 100%;
+
+  margin-top:
+    clamp(2rem, 4vw, 3rem);
+
+  border-top:
+    1px solid var(--color-line);
+}
+
+.home-business-focus__list li {
+  display: grid;
+
+  grid-template-columns:
+    42px minmax(0, 1fr);
+
+  gap: 1rem;
+  align-items: center;
+
+  min-width: 0;
+
+  padding-block: 1rem;
+
+  border-bottom:
+    1px solid var(--color-line);
+}
+
+.home-business-focus__list span {
+  color:
+    var(--color-violet);
+
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.home-business-focus__list strong {
+  color:
+    var(--color-dark);
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.home-business-focus__actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap:
+    1rem 1.5rem;
+
+  margin-top:
+    clamp(2rem, 4vw, 3rem);
+}
+
+.home-business-focus__actions .nl-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* =========================================================
+   PHOTO GRID
+========================================================= */
+
+.home-business-focus__gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    clamp(1rem, 1.8vw, 1.6rem);
+
+  width: 100%;
+  min-width: 0;
+}
+
+.home-business-focus__photo {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  height:
+    clamp(250px, 22vw, 370px);
+
+  margin: 0;
+
+  overflow: hidden;
+
+  background:
+    var(--color-surface-alt);
+}
+
+
+/* Subtle geometric variation */
+
+.home-business-focus__photo:first-child {
+  border-radius:
+    3rem 0 0 0;
+}
+
+.home-business-focus__photo:nth-child(2) {
+  border-radius:
+    0 3rem 0 0;
+}
+
+.home-business-focus__photo:nth-child(3) {
+  border-radius:
+    0 0 0 3rem;
+}
+
+.home-business-focus__photo:nth-child(4) {
+  border-radius:
+    0 0 3rem 0;
+}
+
+
+/* Lime divider detail */
+
+.home-business-focus__photo::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 42px;
+  height: 4px;
+
+  background:
+    var(--color-lime);
+
+  transition:
+    width 300ms ease;
+}
+
+.home-business-focus__photo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 800ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.home-business-focus__photo:hover img {
+  transform:
+    scale(1.045);
+}
+
+.home-business-focus__photo:hover::after {
+  width: 100%;
+}
+
+
+/* Individual image positioning */
+
+.home-business-focus__photo:first-child img {
+  object-position: center;
+}
+
+.home-business-focus__photo:nth-child(2) img {
+  object-position: center;
+}
+
+.home-business-focus__photo:nth-child(3) img {
+  object-position: center;
+}
+
+.home-business-focus__photo:nth-child(4) img {
+  object-position: center;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 980px) {
+  .home-business-focus__grid {
+    grid-template-columns:
+      minmax(0, 0.85fr) minmax(0, 1.15fr);
+
+    gap:
+      clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .home-business-focus__content h2 {
+    font-size:
+      clamp(2.7rem, 5.5vw, 4.2rem);
+  }
+
+  .home-business-focus__photo {
+    height:
+      clamp(220px, 25vw, 310px);
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 820px) {
+  .home-business-focus {
+    padding-block:
+      3.5rem;
+  }
+
+  .home-business-focus__grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 3.5rem;
+  }
+
+  .home-business-focus__content {
+    max-width: 760px;
+  }
+
+  .home-business-focus__content h2 {
+    max-width: 17ch;
+  }
+
+  .home-business-focus__photo {
+    height:
+      clamp(260px, 43vw, 390px);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+  .home-business-focus {
+    padding-block:
+      2.75rem;
+  }
+
+  .home-business-focus__grid {
+    gap: 2.75rem;
+  }
+
+  .home-business-focus__content h2 {
+    max-width: 100%;
+
+    font-size:
+      clamp(2.35rem, 10.5vw, 3.6rem);
+
+    line-height: 1;
+  }
+
+  .home-business-focus__content>p {
+    font-size: 0.96rem;
+  }
+
+  .home-business-focus__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-business-focus__actions .nl-button {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .home-business-focus__actions .nl-text-link {
+    justify-content: center;
+  }
+
+  .home-business-focus__gallery {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 0.9rem;
+  }
+
+  .home-business-focus__photo {
+    height: 280px;
+
+    border-radius:
+      1.4rem !important;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .home-business-focus__photo {
+    height: 245px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-business-focus__photo img,
+  .home-business-focus__photo::after {
+    transition: none;
+  }
+
+  .home-business-focus__photo:hover img {
+    transform: none;
+  }
+}
