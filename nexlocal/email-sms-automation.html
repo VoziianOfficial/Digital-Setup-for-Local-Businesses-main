@@ -23,6 +23,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="assets/css/service-page.css">
   <script
     type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Email and SMS Automation Options","description":"An informational Nexlocal category for exploring permission-based customer communication workflows.","url":"https://www.nexlocal.com/email-sms-automation.html"}</script>
@@ -132,6 +133,59 @@
       </div>
     </section>
 
+    <section class="service-guidance" data-service-guidance aria-labelledby="serviceGuidanceTitle">
+      <picture class="service-guidance__background">
+        <img src="assets/images/home/local-owner-office.jpg" width="1600" height="900" loading="lazy" decoding="async"
+          alt="" data-service-guidance-image>
+      </picture>
+    
+      <span class="service-guidance__overlay" aria-hidden="true"></span>
+    
+      <span class="service-guidance__glow service-guidance__glow--lime" aria-hidden="true"></span>
+    
+      <span class="service-guidance__glow service-guidance__glow--violet" aria-hidden="true"></span>
+    
+      <div class="nl-container service-guidance__container">
+    
+        <header class="service-guidance__header" data-reveal>
+          <span class="nl-eyebrow nl-eyebrow--light">
+            Nexlocal service guidance
+          </span>
+    
+          <h2 id="serviceGuidanceTitle">
+            <span data-service-guidance-title>
+              What this service
+            </span>
+    
+            <em data-service-guidance-accent>
+              should clarify
+            </em>
+          </h2>
+        </header>
+    
+        <div class="swiper service-guidance__swiper" data-service-guidance-swiper>
+          <div class="swiper-wrapper" data-service-guidance-wrapper></div>
+        </div>
+    
+        <button class="service-guidance__arrow service-guidance__arrow--prev" type="button"
+          aria-label="Previous service guidance" data-service-guidance-prev>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+        </button>
+    
+        <button class="service-guidance__arrow service-guidance__arrow--next" type="button"
+          aria-label="Next service guidance" data-service-guidance-next>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+    
+        <div class="service-guidance__pagination" data-service-guidance-pagination></div>
+    
+      </div>
+    </section>
+
     <section class="nl-section service-benefits" aria-labelledby="serviceBenefitsTitle" data-service-benefits>
       <div class="nl-container">
     
@@ -158,6 +212,7 @@
   <div data-site-footer></div>
   <script src="assets/js/config.js" defer></script>
   <script src="assets/js/interactions.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
   <script src="assets/js/service-page.js" defer></script>
   <script src="assets/js/global.js" defer></script>
 </body>

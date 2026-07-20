@@ -778,3 +778,479 @@
         initServiceFocus();
     }
 })();
+
+(function () {
+    "use strict";
+
+    const SERVICE_GUIDANCE = {
+        "small-business-websites": {
+            title: "What a business website",
+            accent: "should clarify",
+            image: "assets/images/home/local-owner-office.jpg",
+            alt: "Local business team reviewing website priorities",
+
+            slides: [
+                {
+                    label: "Website clarity",
+                    text:
+                        "A useful website should help a new visitor understand the business, service context, location, and next suitable action without needing to search through unnecessary content."
+                },
+                {
+                    label: "Customer journey",
+                    text:
+                        "Navigation, mobile layout, calls to action, forms, and supporting information should work as one connected path rather than as separate decorative elements."
+                },
+                {
+                    label: "Practical measurement",
+                    text:
+                        "Website analytics are most useful when they focus on customer actions such as calls, inquiries, bookings, directions, or other meaningful next steps."
+                }
+            ]
+        },
+
+        "google-business-profile-setup": {
+            title: "What local profile setup",
+            accent: "should clarify",
+            image: "assets/images/home/cafe-owner-tablet.jpg",
+            alt: "Local business owner reviewing profile information",
+
+            slides: [
+                {
+                    label: "Accurate information",
+                    text:
+                        "The profile should present consistent business details, relevant categories, location or service-area information, operating hours, and suitable customer contact options."
+                },
+                {
+                    label: "Discovery pathway",
+                    text:
+                        "Local discovery should connect customers with a useful next step, such as visiting the website, calling, requesting directions, or beginning a booking journey."
+                },
+                {
+                    label: "Review workflow",
+                    text:
+                        "Review requests and responses should be organized around timing, relevance, customer consent, and clear internal responsibility."
+                }
+            ]
+        },
+
+        "online-booking-setup": {
+            title: "What online booking",
+            accent: "should simplify",
+            image: "assets/images/services/salon-owner-schedule.jpg",
+            alt: "Business owner reviewing appointment availability",
+
+            slides: [
+                {
+                    label: "Service selection",
+                    text:
+                        "Customers should be able to understand which services can be booked directly and which requests require a separate conversation or qualification step."
+                },
+                {
+                    label: "Availability rules",
+                    text:
+                        "Duration, preparation time, staff capacity, working hours, confirmation, and scheduling boundaries should reflect the way the business actually operates."
+                },
+                {
+                    label: "Customer confirmation",
+                    text:
+                        "After a booking action, the customer should clearly understand whether the appointment is confirmed, pending, or waiting for additional information."
+                }
+            ]
+        },
+
+        "lead-forms-call-tracking": {
+            title: "What an inquiry pathway",
+            accent: "should collect",
+            image:
+                "assets/images/services/home-service-owner-workshop.jpg",
+            alt: "Business owner reviewing customer inquiry information",
+
+            slides: [
+                {
+                    label: "Focused forms",
+                    text:
+                        "A useful inquiry form collects enough context for an appropriate response without creating unnecessary fields or making the customer journey feel difficult."
+                },
+                {
+                    label: "Clear routing",
+                    text:
+                        "Each form submission or tracked call should have a clear destination, responsible owner, and practical next action."
+                },
+                {
+                    label: "Meaningful conversion",
+                    text:
+                        "Measurement should distinguish meaningful customer requests from general visits, accidental actions, or incomplete contact attempts."
+                }
+            ]
+        },
+
+        "review-management": {
+            title: "What a feedback workflow",
+            accent: "should respect",
+            image: "assets/images/home/cafe-owner-tablet.jpg",
+            alt: "Business owner reviewing customer feedback",
+
+            slides: [
+                {
+                    label: "Appropriate timing",
+                    text:
+                        "A review request should be connected to a relevant customer experience rather than being sent automatically without useful context."
+                },
+                {
+                    label: "Clear communication",
+                    text:
+                        "Feedback requests should remain respectful, permission-aware, easy to understand, and free from misleading pressure or unsupported incentives."
+                },
+                {
+                    label: "Internal responsibility",
+                    text:
+                        "The business should know who monitors new feedback, who prepares responses, and when an issue needs internal follow-up."
+                }
+            ]
+        },
+
+        "email-sms-automation": {
+            title: "What automated communication",
+            accent: "should support",
+            image:
+                "assets/images/services/salon-owner-schedule.jpg",
+            alt: "Business owner planning customer communication",
+
+            slides: [
+                {
+                    label: "Permission first",
+                    text:
+                        "Email and SMS workflows should be planned around appropriate consent, customer expectations, and a clearly defined reason for each message."
+                },
+                {
+                    label: "Useful triggers",
+                    text:
+                        "A message should be connected to a meaningful event such as an inquiry, appointment, reminder, status update, or required customer action."
+                },
+                {
+                    label: "Human handoff",
+                    text:
+                        "Automation should make it clear when a customer response requires personal attention instead of continuing through an unsuitable automated sequence."
+                }
+            ]
+        },
+
+        "analytics-setup": {
+            title: "What useful analytics",
+            accent: "should reveal",
+            image:
+                "assets/images/services/clinic-manager-tablet.jpg",
+            alt: "Business manager reviewing analytics information",
+
+            slides: [
+                {
+                    label: "Meaningful actions",
+                    text:
+                        "Analytics should focus on events that represent real customer intent, including calls, completed forms, bookings, directions, and other practical actions."
+                },
+                {
+                    label: "Clean structure",
+                    text:
+                        "Clear event names and consistent tracking reduce duplicated data, confusing reports, and measurements that cannot support a business decision."
+                },
+                {
+                    label: "Decision context",
+                    text:
+                        "Reporting becomes more useful when it helps identify customer friction, effective content, and areas that may deserve further attention."
+                }
+            ]
+        },
+
+        "crm-setup": {
+            title: "What a CRM workflow",
+            accent: "should organize",
+            image:
+                "assets/images/services/clinic-manager-tablet.jpg",
+            alt: "Business manager reviewing customer workflow information",
+
+            slides: [
+                {
+                    label: "Pipeline clarity",
+                    text:
+                        "CRM stages should reflect how inquiries actually move through the business instead of copying a generic pipeline that does not match the workflow."
+                },
+                {
+                    label: "Clear ownership",
+                    text:
+                        "Every active inquiry, follow-up task, or customer update should have a clear owner and an understandable next action."
+                },
+                {
+                    label: "Connected context",
+                    text:
+                        "Forms, bookings, communication, analytics, and customer notes should provide useful context without creating unnecessary duplication."
+                }
+            ]
+        }
+    };
+
+    const FALLBACK_GUIDANCE = {
+        title: "What this digital service",
+        accent: "should clarify",
+        image:
+            "assets/images/home/local-owner-office.jpg",
+        alt:
+            "Local business team reviewing digital setup priorities",
+
+        slides: [
+            {
+                label: "Current context",
+                text:
+                    "Begin with the systems, customer journey, and practical workflow the business already uses."
+            },
+            {
+                label: "Useful priority",
+                text:
+                    "Focus first on the area that creates the most visible customer or operational friction."
+            },
+            {
+                label: "Suitable pathway",
+                text:
+                    "Consider compatibility, responsibilities, scope, and next-step requirements before adding more tools."
+            }
+        ]
+    };
+
+    function getServiceGuidanceSlug() {
+        const bodySlug =
+            document.body.dataset.serviceSlug;
+
+        if (bodySlug) {
+            return bodySlug;
+        }
+
+        const fileName =
+            window.location.pathname
+                .split("/")
+                .pop()
+                .split("?")[0]
+                .split("#")[0];
+
+        return fileName.replace(/\.html$/i, "");
+    }
+
+    function createGuidanceSlide(item, index) {
+        const slide =
+            document.createElement("div");
+
+        slide.className =
+            "swiper-slide service-guidance-slide";
+
+        const quote =
+            document.createElement("p");
+
+        quote.className =
+            "service-guidance-slide__quote";
+
+        quote.textContent =
+            item.text;
+
+        const meta =
+            document.createElement("div");
+
+        meta.className =
+            "service-guidance-slide__meta";
+
+        const badge =
+            document.createElement("span");
+
+        badge.className =
+            "service-guidance-slide__badge";
+
+        badge.textContent =
+            String(index + 1).padStart(2, "0");
+
+        const source =
+            document.createElement("strong");
+
+        source.textContent =
+            "Nexlocal guidance";
+
+        const label =
+            document.createElement("span");
+
+        label.textContent =
+            item.label;
+
+        meta.append(
+            badge,
+            source,
+            label
+        );
+
+        slide.append(
+            quote,
+            meta
+        );
+
+        return slide;
+    }
+
+    function initServiceGuidance() {
+        const section =
+            document.querySelector(
+                "[data-service-guidance]"
+            );
+
+        if (
+            !section ||
+            section.dataset.guidanceInitialized === "true"
+        ) {
+            return;
+        }
+
+        const slug =
+            getServiceGuidanceSlug();
+
+        const content =
+            SERVICE_GUIDANCE[slug] ||
+            FALLBACK_GUIDANCE;
+
+        const title =
+            section.querySelector(
+                "[data-service-guidance-title]"
+            );
+
+        const accent =
+            section.querySelector(
+                "[data-service-guidance-accent]"
+            );
+
+        const image =
+            section.querySelector(
+                "[data-service-guidance-image]"
+            );
+
+        const wrapper =
+            section.querySelector(
+                "[data-service-guidance-wrapper]"
+            );
+
+        const swiperElement =
+            section.querySelector(
+                "[data-service-guidance-swiper]"
+            );
+
+        if (title) {
+            title.textContent = content.title;
+        }
+
+        if (accent) {
+            accent.textContent = content.accent;
+        }
+
+        if (image) {
+            image.src = content.image;
+            image.alt = content.alt;
+        }
+
+        if (!wrapper || !swiperElement) {
+            return;
+        }
+
+        const fragment =
+            document.createDocumentFragment();
+
+        content.slides.forEach(function (item, index) {
+            fragment.appendChild(
+                createGuidanceSlide(item, index)
+            );
+        });
+
+        wrapper.replaceChildren(fragment);
+
+        if (typeof window.Swiper !== "function") {
+            section.classList.add("is-static");
+            section.dataset.guidanceInitialized = "true";
+            return;
+        }
+
+        const previousButton =
+            section.querySelector(
+                "[data-service-guidance-prev]"
+            );
+
+        const nextButton =
+            section.querySelector(
+                "[data-service-guidance-next]"
+            );
+
+        const pagination =
+            section.querySelector(
+                "[data-service-guidance-pagination]"
+            );
+
+        const swiper = new window.Swiper(swiperElement, {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            speed: 720,
+
+            loop: content.slides.length > 1,
+            rewind: false,
+
+            autoHeight: true,
+            grabCursor: true,
+            watchOverflow: true,
+            observer: true,
+            observeParents: true,
+
+            allowTouchMove: content.slides.length > 1,
+
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true
+            },
+
+            navigation: {
+                prevEl: previousButton,
+                nextEl: nextButton
+            },
+
+            pagination: {
+                el: pagination,
+                clickable: true,
+                dynamicBullets: false
+            },
+
+            a11y: {
+                enabled: true,
+                prevSlideMessage: "Previous service guidance",
+                nextSlideMessage: "Next service guidance",
+                firstSlideMessage: "This is the first guidance item",
+                lastSlideMessage: "This is the last guidance item"
+            },
+
+            on: {
+                init: function () {
+                    section.classList.add("is-ready");
+                }
+            }
+        });
+
+        section.serviceGuidanceSwiper = swiper;
+
+        section.dataset.guidanceInitialized =
+            "true";
+    }
+
+    window.NEXLOCAL_PAGE_INITS =
+        window.NEXLOCAL_PAGE_INITS || [];
+
+    window.NEXLOCAL_PAGE_INITS.push(
+        initServiceGuidance
+    );
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initServiceGuidance,
+            { once: true }
+        );
+    } else {
+        initServiceGuidance();
+    }
+})();
