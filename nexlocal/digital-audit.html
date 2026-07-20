@@ -95,42 +95,144 @@
       </div>
     </section>
 
-    <section class="nl-section nl-section--dark" data-section="audit-02">
-      <div class="nl-container">
-        <div class="nl-section-heading">
-          <div><span class="nl-eyebrow nl-eyebrow--light">Interactive diagnostic map</span>
-            <h2>Explore one category at a time.</h2>
+    <section class="nl-section nl-section--white audit-context" data-section="audit-context"
+      aria-labelledby="auditContextTitle">
+      <div class="nl-container audit-context__grid">
+    
+        <div class="audit-context__visual" data-reveal>
+          <figure class="audit-context__photo audit-context__photo--main">
+            <img src="assets/images/home/local-owner-office.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+              alt="Local business team reviewing digital systems and customer activity">
+          </figure>
+    
+          <figure class="audit-context__photo audit-context__photo--secondary">
+            <img src="assets/images/home/cafe-owner-tablet.jpg" width="1536" height="1024" loading="lazy" decoding="async"
+              alt="Local business owner reviewing customer information on a tablet">
+          </figure>
+    
+          <span class="audit-context__shape" aria-hidden="true"></span>
+          <span class="audit-context__line" aria-hidden="true"></span>
+        </div>
+    
+        <div class="audit-context__content">
+          <header class="audit-context__header" data-reveal>
+            <span class="nl-eyebrow">Where friction usually appears</span>
+    
+            <h2 id="auditContextTitle">
+              The useful audit begins where the customer journey breaks.
+            </h2>
+    
+            <p>
+              A digital setup can look complete while still creating uncertainty
+              for customers or unnecessary manual work for the business.
+            </p>
+          </header>
+    
+          <div class="audit-context__cards">
+    
+            <article class="audit-context-card" data-reveal>
+              <span class="audit-context-card__number">01</span>
+    
+              <span class="audit-context-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor">
+                  <circle cx="22" cy="22" r="13"></circle>
+                  <path d="m32 32 9 9"></path>
+                  <path d="M16 22h12"></path>
+                  <path d="M22 16v12"></path>
+                </svg>
+              </span>
+    
+              <h3>Discovery friction</h3>
+    
+              <p>
+                Customers find the business but cannot quickly understand the
+                service, location, or next step.
+              </p>
+            </article>
+    
+            <article class="audit-context-card audit-context-card--violet" data-reveal>
+              <span class="audit-context-card__number">02</span>
+    
+              <span class="audit-context-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor">
+                  <path d="M8 10h32v27H20l-8 6v-6H8z"></path>
+                  <path d="M15 19h18"></path>
+                  <path d="M15 26h12"></path>
+                </svg>
+              </span>
+    
+              <h3>Decision friction</h3>
+    
+              <p>
+                Information exists, but the customer does not know which option,
+                service, or action fits their situation.
+              </p>
+            </article>
+    
+            <article class="audit-context-card audit-context-card--dark" data-reveal>
+              <span class="audit-context-card__number">03</span>
+    
+              <span class="audit-context-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor">
+                  <rect x="8" y="11" width="32" height="30" rx="3"></rect>
+                  <path d="M8 20h32"></path>
+                  <path d="M16 7v9"></path>
+                  <path d="M32 7v9"></path>
+                  <path d="m17 30 4 4 10-11"></path>
+                </svg>
+              </span>
+    
+              <h3>Contact friction</h3>
+    
+              <p>
+                Forms, calls, and booking paths collect too little context or
+                create unnecessary steps.
+              </p>
+            </article>
+    
+            <article class="audit-context-card" data-reveal>
+              <span class="audit-context-card__number">04</span>
+    
+              <span class="audit-context-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor">
+                  <circle cx="13" cy="24" r="4"></circle>
+                  <circle cx="24" cy="13" r="4"></circle>
+                  <circle cx="35" cy="24" r="4"></circle>
+                  <circle cx="24" cy="35" r="4"></circle>
+                  <path d="m16 21 5-5"></path>
+                  <path d="m27 16 5 5"></path>
+                  <path d="m32 27-5 5"></path>
+                  <path d="m21 32-5-5"></path>
+                </svg>
+              </span>
+    
+              <h3>Follow-up friction</h3>
+    
+              <p>
+                Customer activity is spread across disconnected tools, inboxes,
+                calendars, or manual reminders.
+              </p>
+            </article>
+    
           </div>
-          <p>Select a category to see a useful diagnostic question. The map does not generate a score or store your
-            selections.</p>
+    
+          <div class="audit-context__actions" data-reveal>
+            <a class="nl-button nl-button--dark" href="all-services.html">
+              Explore Service Categories
+              <span aria-hidden="true">→</span>
+            </a>
+    
+            <a class="nl-text-link" href="service-packages.html">
+              View connected packages
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
-        <div class="nl-system-map" data-diagnostic>
-          <div class="nl-system-map__center">Your setup</div><button type="button" data-diagnostic-node
-            data-title="Website clarity"
-            data-description="Can a new visitor understand the offer, service context and next step without guessing?"
-            aria-pressed="true">Website clarity</button><button type="button" data-diagnostic-node
-            data-title="Local visibility"
-            data-description="Are core business details consistent where customers discover them?"
-            aria-pressed="false">Local visibility</button><button type="button" data-diagnostic-node
-            data-title="Booking"
-            data-description="Does the booking path reflect services, availability and confirmation needs?"
-            aria-pressed="false">Booking</button><button type="button" data-diagnostic-node data-title="Inquiry capture"
-            data-description="Does the form collect enough context for an appropriate response?"
-            aria-pressed="false">Inquiry capture</button><button type="button" data-diagnostic-node
-            data-title="Follow-up"
-            data-description="Are customer updates relevant, permission-based and easy to understand?"
-            aria-pressed="false">Follow-up</button><button type="button" data-diagnostic-node data-title="Analytics"
-            data-description="Which events correspond to meaningful customer actions?"
-            aria-pressed="false">Analytics</button><button type="button" data-diagnostic-node
-            data-title="CRM organization"
-            data-description="Can the business see who needs a response and what happens next?" aria-pressed="false">CRM
-            organization</button>
-          <div class="nl-system-map__output" data-diagnostic-output aria-live="polite"><strong>Website
-              clarity</strong><span>Can a new visitor understand the offer, service context and next step without
-              guessing?</span></div>
-        </div>
+    
       </div>
     </section>
+
+
 
     <section class="nl-section nl-section--white" data-section="audit-03">
       <div class="nl-container">
@@ -162,11 +264,143 @@
       </div>
     </section>
 
+    <section class="audit-signals" data-section="audit-signals" aria-labelledby="auditSignalsTitle">
+      <div class="nl-container">
+    
+        <header class="audit-signals__header" data-reveal>
+          <div>
+            <span class="audit-signals__eyebrow">
+              Common digital friction
+            </span>
+    
+            <h2 id="auditSignalsTitle">
+              Look for the signals behind the visible problem.
+            </h2>
+          </div>
+    
+          <p>
+            A symptom in one area may be caused by a disconnected system somewhere
+            else in the customer or internal workflow.
+          </p>
+        </header>
+    
+        <div class="audit-signals__grid">
+    
+          <article class="audit-signal-card audit-signal-card--lime" data-reveal>
+            <a class="audit-signal-card__link" href="small-business-websites.html">
+              <picture class="audit-signal-card__media">
+                <img src="assets/images/home/local-owner-office.jpg" width="1600" height="1067" loading="lazy"
+                  decoding="async" alt="Local business team reviewing website information">
+              </picture>
+    
+              <span class="audit-signal-card__overlay" aria-hidden="true"></span>
+    
+              <div class="audit-signal-card__top">
+                <span>Website clarity</span>
+                <span>01</span>
+              </div>
+    
+              <div class="audit-signal-card__content">
+                <small>Common signal</small>
+    
+                <h3>
+                  Customers cannot quickly tell what the business offers.
+                </h3>
+    
+                <span class="audit-signal-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M8 7h9v9"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </article>
+    
+          <article class="audit-signal-card audit-signal-card--violet" data-reveal>
+            <a class="audit-signal-card__link" href="lead-forms-call-tracking.html">
+              <picture class="audit-signal-card__media">
+                <img src="assets/images/services/home-service-owner-workshop.jpg" width="1536" height="1024" loading="lazy"
+                  decoding="async" alt="Local business owner organizing customer requests">
+              </picture>
+    
+              <span class="audit-signal-card__overlay" aria-hidden="true"></span>
+    
+              <div class="audit-signal-card__top">
+                <span>Inquiry capture</span>
+                <span>02</span>
+              </div>
+    
+              <div class="audit-signal-card__content">
+                <small>Common signal</small>
+    
+                <h3>
+                  Requests arrive without enough context for a useful response.
+                </h3>
+    
+                <span class="audit-signal-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M8 7h9v9"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </article>
+    
+          <article class="audit-signal-card audit-signal-card--soft" data-reveal>
+            <a class="audit-signal-card__link" href="crm-setup.html">
+              <picture class="audit-signal-card__media">
+                <img src="assets/images/services/clinic-manager-tablet.jpg" width="1600" height="881" loading="lazy"
+                  decoding="async" alt="Local business manager reviewing customer activity">
+              </picture>
+    
+              <span class="audit-signal-card__overlay" aria-hidden="true"></span>
+    
+              <div class="audit-signal-card__top">
+                <span>Connected operations</span>
+                <span>03</span>
+              </div>
+    
+              <div class="audit-signal-card__content">
+                <small>Common signal</small>
+    
+                <h3>
+                  Customer follow-up depends on disconnected tools and memory.
+                </h3>
+    
+                <span class="audit-signal-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M8 7h9v9"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </article>
+    
+        </div>
+    
+        <footer class="audit-signals__footer" data-reveal>
+          <p>
+            The audit inquiry helps identify which category may deserve attention
+            first.
+          </p>
+    
+          <a class="nl-button nl-button--primary" href="contact.html?request=digital-audit">
+            Start an Audit Inquiry
+            <span aria-hidden="true">→</span>
+          </a>
+        </footer>
+    
+      </div>
+    </section>
+
     <section class="nl-section" data-section="audit-04">
       <div class="nl-container audit-receive">
         <div><span class="nl-eyebrow">What you may receive</span>
           <h2>Useful direction, carefully framed.</h2>
-          <p style="margin-block-top:1.2rem">The audit inquiry is designed to clarify the discussion. It does not
+          <p class="audit-receive__lead">The audit inquiry is designed to clarify the discussion. It does not
             promise a formal certification, technical inspection or guaranteed provider match.</p>
         </div>
         <ol>
