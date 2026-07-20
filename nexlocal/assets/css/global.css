@@ -49,9 +49,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body,
 main {
-  overflow-x: clip;
+  overflow: visible;
 }
 
 img,
@@ -260,14 +264,63 @@ p {
 }
 
 .nl-header {
-  position: sticky;
-  inset-block-start: 0;
-  z-index: 1000;
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
   height: var(--header-height);
+
   background: var(--color-dark);
   color: var(--color-white);
+
   border-block-end: 1px solid var(--color-line-dark);
-  transition: height .3s ease, box-shadow .3s ease;
+
+  overflow: visible;
+
+  transform: none;
+  contain: none;
+
+  transition:
+    height .3s ease,
+    box-shadow .3s ease;
+}
+
+/* =========================================================
+   REAL STICKY HEADER WRAPPER
+========================================================= */
+
+[data-site-header] {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 5000 !important;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  overflow: visible !important;
+
+  transform: none !important;
+  filter: none !important;
+  contain: none !important;
+
+  background: var(--color-dark);
+}
+
+.nl-mobile-menu {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: auto !important;
+  max-width: none !important;
+
+  height: 100vh !important;
+  height: 100dvh !important;
+
+  z-index: 10000 !important;
+
+  transform: none;
 }
 
 .nl-header.is-compact {
