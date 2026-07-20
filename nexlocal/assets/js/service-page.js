@@ -500,3 +500,281 @@
         initServiceBenefits();
     }
 })();
+
+(function () {
+    "use strict";
+
+    const SERVICE_FOCUS_CONTENT = {
+        "small-business-websites": {
+            eyebrow: "A clearer website direction",
+            title: "Build around what customers need to understand first.",
+            lead:
+                "A useful business website should make the offer, location, context, and next step easier to understand.",
+            text:
+                "The structure can be shaped around real customer questions instead of unnecessary sections or decorative features. Content, navigation, mobile behavior, inquiry paths, and measurement should support the same clear journey.",
+            points: [
+                "Explain the business and service context without unnecessary complexity.",
+                "Create a clear mobile journey from discovery to contact.",
+                "Connect important customer actions with practical measurement."
+            ],
+            image: "assets/images/home/local-owner-office.jpg",
+            alt: "Local business team reviewing a website and customer journey"
+        },
+
+        "google-business-profile-setup": {
+            eyebrow: "From local discovery to action",
+            title: "Make public business information easier to trust and use.",
+            lead:
+                "A local profile should help customers confirm the essential details and understand the next suitable action.",
+            text:
+                "The setup may include categories, public details, service information, website connections, booking pathways, review workflows, and useful measurement questions. Accuracy and relevance matter more than filling every available field.",
+            points: [
+                "Organize accurate business, location, service, and contact details.",
+                "Connect profile discovery to the most relevant customer action.",
+                "Plan review and measurement workflows around real activity."
+            ],
+            image: "assets/images/home/cafe-owner-tablet.jpg",
+            alt: "Local business owner reviewing public business information"
+        },
+
+        "online-booking-setup": {
+            eyebrow: "A clearer appointment pathway",
+            title: "Shape booking around real services and availability.",
+            lead:
+                "Online booking should reduce uncertainty without forcing every customer request into the same process.",
+            text:
+                "Service types, appointment duration, staff availability, preparation time, confirmation, rescheduling, reminders, and website placement all influence whether the booking journey feels useful.",
+            points: [
+                "Define which services and request types can be booked online.",
+                "Clarify availability, confirmation, and scheduling boundaries.",
+                "Connect booking actions with the wider customer journey."
+            ],
+            image: "assets/images/services/salon-owner-schedule.jpg",
+            alt: "Business owner organizing an online appointment schedule"
+        },
+
+        "lead-forms-call-tracking": {
+            eyebrow: "From customer interest to context",
+            title: "Collect enough information for a more useful response.",
+            lead:
+                "A lead pathway should help the customer take action while giving the business enough context for the next step.",
+            text:
+                "The right structure may include focused forms, inquiry qualification, routing, call context, follow-up triggers, and meaningful conversion events without making the contact journey unnecessarily long.",
+            points: [
+                "Ask focused questions that support a useful response.",
+                "Route forms and calls to a clear owner or workflow.",
+                "Measure meaningful inquiries rather than decorative activity."
+            ],
+            image: "assets/images/services/home-service-owner-workshop.jpg",
+            alt: "Local business owner organizing customer inquiries"
+        },
+
+        "review-management": {
+            eyebrow: "A clearer feedback workflow",
+            title: "Build review requests around timing, relevance, and respect.",
+            lead:
+                "Customer feedback is more useful when the request process fits the experience and does not create unnecessary pressure.",
+            text:
+                "Review timing, message tone, permission, public and private feedback paths, internal responsibility, and response practices can be organized into one clearer workflow.",
+            points: [
+                "Choose appropriate moments for customer feedback requests.",
+                "Keep communication clear, relevant, and permission-aware.",
+                "Organize monitoring, responses, and internal follow-up."
+            ],
+            image: "assets/images/home/cafe-owner-tablet.jpg",
+            alt: "Business owner reviewing customer feedback information"
+        },
+
+        "email-sms-automation": {
+            eyebrow: "Communication with a clear purpose",
+            title: "Send useful messages at the moments that matter.",
+            lead:
+                "Email and SMS workflows should support a defined customer action instead of adding unnecessary communication.",
+            text:
+                "Triggers, audience context, consent, message purpose, follow-up logic, and human handoff all affect whether an automated workflow remains useful and understandable.",
+            points: [
+                "Define permission-aware triggers for each message type.",
+                "Keep every message focused on one useful customer action.",
+                "Plan what happens after a response or completed step."
+            ],
+            image: "assets/images/services/salon-owner-schedule.jpg",
+            alt: "Business owner planning customer communication workflows"
+        },
+
+        "analytics-setup": {
+            eyebrow: "Measurement with practical context",
+            title: "Track the customer actions that support real decisions.",
+            lead:
+                "Useful analytics begins with business questions, not with collecting every available number.",
+            text:
+                "Calls, forms, bookings, customer paths, channel context, event naming, and reporting can be organized around actions the business can understand and use.",
+            points: [
+                "Identify events that represent meaningful customer intent.",
+                "Reduce duplicated, unclear, or decorative tracking.",
+                "Build reporting around questions the business can act on."
+            ],
+            image: "assets/images/services/clinic-manager-tablet.jpg",
+            alt: "Business manager reviewing analytics and customer activity"
+        },
+
+        "crm-setup": {
+            eyebrow: "Customer context in one workflow",
+            title: "Organize inquiries around ownership and the next action.",
+            lead:
+                "A CRM structure should make it easier to see who needs attention, what has happened, and what should happen next.",
+            text:
+                "Contact information, pipeline stages, responsibility, tasks, forms, booking, communication, and analytics connections can be organized around the way the business actually operates.",
+            points: [
+                "Define clear stages for inquiries and customer activity.",
+                "Assign ownership for responses, tasks, and follow-up.",
+                "Connect useful context from forms, booking, and communication."
+            ],
+            image: "assets/images/services/clinic-manager-tablet.jpg",
+            alt: "Business manager reviewing CRM and customer workflow information"
+        }
+    };
+
+    const FALLBACK_CONTENT = {
+        eyebrow: "A clearer digital direction",
+        title: "Choose what matters to your business and your customers.",
+        lead:
+            "Focus on the part of the digital experience that creates the most useful change for customers and the business.",
+        text:
+            "The right setup depends on the current workflow, customer journey, technical constraints, and the actions the business wants to make clearer.",
+        points: [
+            "Review the current customer journey.",
+            "Identify practical friction and priorities.",
+            "Explore a suitable next-step pathway."
+        ],
+        image: "assets/images/home/local-owner-office.jpg",
+        alt: "Local business team reviewing digital setup priorities"
+    };
+
+    function getServiceFocusSlug() {
+        const bodySlug = document.body.dataset.serviceSlug;
+
+        if (bodySlug) {
+            return bodySlug;
+        }
+
+        const fileName = window.location.pathname
+            .split("/")
+            .pop()
+            .split("?")[0]
+            .split("#")[0];
+
+        return fileName.replace(/\.html$/i, "");
+    }
+
+    function setServiceFocusText(section, selector, value) {
+        const element = section.querySelector(selector);
+
+        if (element && value) {
+            element.textContent = value;
+        }
+    }
+
+    function initServiceFocus() {
+        const section = document.querySelector("[data-service-focus]");
+
+        if (
+            !section ||
+            section.dataset.focusInitialized === "true"
+        ) {
+            return;
+        }
+
+        const slug = getServiceFocusSlug();
+
+        const content =
+            SERVICE_FOCUS_CONTENT[slug] ||
+            FALLBACK_CONTENT;
+
+        setServiceFocusText(
+            section,
+            "[data-service-focus-eyebrow]",
+            content.eyebrow
+        );
+
+        setServiceFocusText(
+            section,
+            "[data-service-focus-title]",
+            content.title
+        );
+
+        setServiceFocusText(
+            section,
+            "[data-service-focus-lead]",
+            content.lead
+        );
+
+        setServiceFocusText(
+            section,
+            "[data-service-focus-text]",
+            content.text
+        );
+
+        const image = section.querySelector(
+            "[data-service-focus-image]"
+        );
+
+        if (image) {
+            image.src = content.image;
+            image.alt = content.alt;
+        }
+
+        const points = section.querySelector(
+            "[data-service-focus-points]"
+        );
+
+        if (points) {
+            const fragment =
+                document.createDocumentFragment();
+
+            content.points.forEach(function (text, index) {
+                const item = document.createElement("li");
+                const number = document.createElement("span");
+                const paragraph = document.createElement("p");
+
+                number.textContent =
+                    String(index + 1).padStart(2, "0");
+
+                paragraph.textContent = text;
+
+                item.append(number, paragraph);
+                fragment.appendChild(item);
+            });
+
+            points.replaceChildren(fragment);
+        }
+
+        const cta = section.querySelector(
+            "[data-service-focus-cta]"
+        );
+
+        if (cta) {
+            cta.href =
+                "contact.html?request=service&service=" +
+                encodeURIComponent(slug);
+        }
+
+        section.dataset.focusInitialized = "true";
+    }
+
+    window.NEXLOCAL_PAGE_INITS =
+        window.NEXLOCAL_PAGE_INITS || [];
+
+    window.NEXLOCAL_PAGE_INITS.push(
+        initServiceFocus
+    );
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initServiceFocus,
+            { once: true }
+        );
+    } else {
+        initServiceFocus();
+    }
+})();

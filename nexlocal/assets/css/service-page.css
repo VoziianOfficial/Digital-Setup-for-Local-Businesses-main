@@ -651,3 +651,652 @@
         transform: none;
     }
 }
+
+/* =========================================================
+   SERVICE FOCUS — IMAGE EDITORIAL SECTION
+========================================================= */
+
+.service-focus {
+    position: relative;
+    isolation: isolate;
+
+    overflow: hidden;
+
+    background:
+        var(--color-white);
+}
+
+.service-focus::before {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+
+    top: -240px;
+    left: -230px;
+
+    width: 570px;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background:
+        rgba(93, 124, 255, 0.07);
+
+    pointer-events: none;
+}
+
+.service-focus::after {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+
+    right: -160px;
+    bottom: -180px;
+
+    width: 380px;
+    aspect-ratio: 1;
+
+    border:
+        1px solid rgba(93, 124, 255, 0.11);
+
+    transform:
+        rotate(31deg);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.service-focus__header {
+    width:
+        min(900px, 100%);
+
+    margin-inline: auto;
+
+    margin-bottom:
+        clamp(2.75rem, 5vw, 5rem);
+
+    text-align: center;
+}
+
+.service-focus__eyebrow {
+    justify-content: center;
+
+    color:
+        var(--color-violet);
+}
+
+.service-focus__header h2 {
+    max-width: 21ch;
+
+    margin-inline: auto;
+
+    color:
+        var(--color-dark);
+
+    font-size:
+        clamp(2.8rem, 4.8vw, 5.2rem);
+
+    line-height: 0.98;
+    letter-spacing: -0.058em;
+
+    text-align: center;
+    text-wrap: balance;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.service-focus__layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.98fr) minmax(0, 1.02fr);
+
+    gap:
+        clamp(3rem, 7vw, 8rem);
+
+    align-items: center;
+}
+
+.service-focus__layout>* {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   VISUAL
+========================================================= */
+
+.service-focus__visual {
+    position: relative;
+
+    width:
+        min(100%, 680px);
+
+    min-height:
+        590px;
+
+    justify-self: center;
+}
+
+.service-focus__blob {
+    position: absolute;
+
+    display: block;
+
+    pointer-events: none;
+}
+
+.service-focus__blob--violet {
+    top: 1%;
+    left: 2%;
+
+    width: 88%;
+    height: 92%;
+
+    border-radius:
+        47% 53% 60% 40% / 39% 42% 58% 61%;
+
+    background:
+        rgba(93, 124, 255, 0.1);
+
+    transform:
+        rotate(-7deg);
+}
+
+.service-focus__blob--lime {
+    right: 0;
+    bottom: 3%;
+
+    width: 37%;
+    aspect-ratio: 1;
+
+    border-radius:
+        43% 57% 64% 36% / 48% 42% 58% 52%;
+
+    background:
+        var(--color-lime);
+
+    transform:
+        rotate(13deg);
+}
+
+.service-focus__media {
+    position: absolute;
+    z-index: 2;
+
+    top: 8%;
+    left: 4%;
+
+    width: 82%;
+    height: 83%;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    border:
+        8px solid var(--color-white);
+
+    border-radius:
+        47% 53% 56% 44% / 43% 40% 60% 57%;
+
+    background:
+        var(--color-background);
+
+    box-shadow:
+        0 30px 90px rgba(16, 21, 19, 0.14);
+
+    transform:
+        rotate(-2deg);
+}
+
+.service-focus__media img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter:
+        saturate(0.86) contrast(1.03);
+
+    transform:
+        scale(1.02);
+
+    transition:
+        transform 850ms cubic-bezier(.2, .7, .2, 1),
+        filter 450ms ease;
+}
+
+.service-focus__media:hover img {
+    transform:
+        scale(1.075);
+
+    filter:
+        saturate(1) contrast(1.03);
+}
+
+
+/* =========================================================
+   STAMP
+========================================================= */
+
+.service-focus__stamp {
+    position: absolute;
+    z-index: 5;
+
+    right: 1%;
+    bottom: 9%;
+
+    display: grid;
+    place-items: center;
+
+    width: 145px;
+    aspect-ratio: 1;
+
+    padding: 1rem;
+
+    border:
+        7px solid var(--color-white);
+
+    border-radius: 50%;
+
+    background:
+        var(--color-dark);
+
+    color:
+        var(--color-white);
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 55px rgba(16, 21, 19, 0.2);
+}
+
+.service-focus__stamp span {
+    color:
+        var(--color-lime);
+
+    font-family:
+        var(--font-heading);
+
+    font-size:
+        1.4rem;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+.service-focus__stamp small {
+    max-width: 11ch;
+
+    margin-top: 0.35rem;
+
+    color:
+        rgba(255, 255, 255, 0.6);
+
+    font-size:
+        0.53rem;
+
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0.07em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   OUTLINE DECORATION
+========================================================= */
+
+.service-focus__outline {
+    position: absolute;
+
+    top: 3%;
+    right: 6%;
+
+    width: 47%;
+    aspect-ratio: 1;
+
+    border:
+        1px solid rgba(93, 124, 255, 0.23);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.service-focus__content {
+    padding-right:
+        clamp(0rem, 3vw, 3rem);
+}
+
+.service-focus__lead {
+    max-width: 31ch;
+
+    color:
+        var(--color-dark);
+
+    font-family:
+        var(--font-heading);
+
+    font-size:
+        clamp(1.35rem, 2vw, 2rem);
+
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.025em;
+
+    text-wrap: balance;
+}
+
+.service-focus__lead strong {
+    color:
+        var(--color-violet);
+}
+
+.service-focus__text {
+    max-width: 61ch;
+
+    margin-top:
+        1.25rem;
+
+    color:
+        var(--color-muted);
+
+    font-size:
+        clamp(0.92rem, 1vw, 1.02rem);
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   POINTS
+========================================================= */
+
+.service-focus__points {
+    display: grid;
+
+    margin:
+        2rem 0 0;
+
+    padding: 0;
+
+    border-top:
+        1px solid var(--color-line);
+
+    list-style: none;
+}
+
+.service-focus__points li {
+    display: grid;
+
+    grid-template-columns:
+        44px minmax(0, 1fr);
+
+    gap: 1rem;
+
+    align-items: center;
+
+    padding-block:
+        1rem;
+
+    border-bottom:
+        1px solid var(--color-line);
+}
+
+.service-focus__points li>span {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(93, 124, 255, 0.1);
+
+    color:
+        var(--color-violet);
+
+    font-size:
+        0.62rem;
+
+    font-weight: 800;
+    letter-spacing: 0.08em;
+
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        transform 220ms ease;
+}
+
+.service-focus__points li:nth-child(2)>span {
+    background:
+        rgba(185, 242, 39, 0.32);
+
+    color:
+        var(--color-dark);
+}
+
+.service-focus__points li:nth-child(3)>span {
+    background:
+        var(--color-dark);
+
+    color:
+        var(--color-lime);
+}
+
+.service-focus__points li:hover>span {
+    transform:
+        rotate(7deg) scale(1.05);
+}
+
+.service-focus__points p {
+    color:
+        var(--color-dark);
+
+    font-size:
+        0.87rem;
+
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.service-focus__actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap:
+        1rem 1.5rem;
+
+    margin-top:
+        2rem;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 980px) {
+    .service-focus__layout {
+        grid-template-columns:
+            minmax(0, 1fr);
+
+        gap: 3rem;
+    }
+
+    .service-focus__visual {
+        width:
+            min(640px, 100%);
+    }
+
+    .service-focus__content {
+        width:
+            min(720px, 100%);
+
+        margin-inline: auto;
+
+        padding-right: 0;
+    }
+
+    .service-focus__lead {
+        max-width: 38ch;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+    .service-focus {
+        padding-block:
+            3rem;
+    }
+
+    .service-focus__header {
+        margin-bottom:
+            2.25rem;
+    }
+
+    .service-focus__header h2 {
+        max-width: 100%;
+
+        font-size:
+            clamp(2.35rem, 10.5vw, 3.6rem);
+
+        line-height: 1;
+    }
+
+    .service-focus__visual {
+        min-height:
+            455px;
+    }
+
+    .service-focus__blob--violet {
+        width: 92%;
+        height: 90%;
+    }
+
+    .service-focus__media {
+        top: 7%;
+        left: 2%;
+
+        width: 87%;
+        height: 80%;
+
+        border-width: 6px;
+    }
+
+    .service-focus__blob--lime {
+        width: 34%;
+    }
+
+    .service-focus__stamp {
+        right: 0;
+        bottom: 7%;
+
+        width: 108px;
+
+        border-width: 5px;
+    }
+
+    .service-focus__stamp span {
+        font-size:
+            1.1rem;
+    }
+
+    .service-focus__stamp small {
+        font-size:
+            0.47rem;
+    }
+
+    .service-focus__lead {
+        max-width: 100%;
+
+        font-size:
+            1.35rem;
+    }
+
+    .service-focus__actions {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .service-focus__actions .nl-button {
+        width: 100%;
+
+        justify-content: center;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .service-focus__media img,
+    .service-focus__points li>span {
+        transition: none;
+    }
+
+    .service-focus__media:hover img,
+    .service-focus__points li:hover>span {
+        transform: none;
+    }
+}
+
+.service-focus__header {
+    width: min(1180px, 100%);
+}
+
+.service-focus__header h2 {
+    max-width: 28ch;
+    width: 100%;
+}
+
+@media (max-width: 980px) {
+    .service-focus__header h2 {
+        max-width: 24ch;
+    }
+}
+
+@media (max-width: 620px) {
+    .service-focus__header h2 {
+        max-width: 100%;
+    }
+}
